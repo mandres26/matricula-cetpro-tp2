@@ -1,0 +1,45 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 17-nov-2013 16:20:47 by Hibernate Tools 3.6.0 -->
+<hibernate-mapping>
+    <class name="com.matricula.model.Grupo" table="GRUPO" catalog="matriculatp2">
+        <id name="idGrupo" type="int">
+            <column name="idGrupo" />
+            <generator class="assigned" />
+        </id>
+        <many-to-one name="profesor" class="com.matricula.model.Profesor" fetch="select">
+            <column name="PROFESOR_codProfesor" not-null="true" />
+        </many-to-one>
+        <many-to-one name="turno" class="com.matricula.model.Turno" fetch="select">
+            <column name="TURNO_idTurno" not-null="true" />
+        </many-to-one>
+        <many-to-one name="curriculaAnual" class="com.matricula.model.CurriculaAnual" fetch="select">
+            <column name="CURRICULA_ANUAL_idCurriculaAnual" length="45" not-null="true" />
+        </many-to-one>
+        <property name="fecInicio" type="date">
+            <column name="fecInicio" length="10" />
+        </property>
+        <property name="fecTermino" type="date">
+            <column name="fecTermino" length="10" />
+        </property>
+        <property name="numMatriculados" type="string">
+            <column name="numMatriculados" length="45" />
+        </property>
+        <property name="cantMaximaAlumno" type="java.lang.Integer">
+            <column name="cantMaximaAlumno" />
+        </property>
+        <set name="grupoDias" table="GRUPO_DIA" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="GRUPO_idGrupo" not-null="true" />
+            </key>
+            <one-to-many class="com.matricula.model.GrupoDia" />
+        </set>
+        <set name="matriculas" table="MATRICULA" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="GRUPO_idGrupo" not-null="true" />
+            </key>
+            <one-to-many class="com.matricula.model.Matricula" />
+        </set>
+    </class>
+</hibernate-mapping>
