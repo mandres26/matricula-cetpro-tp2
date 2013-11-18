@@ -1,0 +1,27 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 17-nov-2013 16:20:47 by Hibernate Tools 3.6.0 -->
+<hibernate-mapping>
+    <class name="com.matricula.model.Modulo" table="MODULO" catalog="matriculatp2">
+        <id name="idModulo" type="int">
+            <column name="idModulo" />
+            <generator class="assigned" />
+        </id>
+        <many-to-one name="especialidad" class="com.matricula.model.Especialidad" fetch="select">
+            <column name="ESPECIALIDAD_RESOLUCION_codEspecialidad_Resolucion" not-null="true" />
+        </many-to-one>
+        <property name="nombreModulo" type="string">
+            <column name="nombreModulo" length="45" />
+        </property>
+        <property name="horasModulo" type="string">
+            <column name="horasModulo" length="45" />
+        </property>
+        <set name="capacidadTerminals" table="CAPACIDAD_TERMINAL" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="MODULO_codModulo" not-null="true" />
+            </key>
+            <one-to-many class="com.matricula.model.CapacidadTerminal" />
+        </set>
+    </class>
+</hibernate-mapping>
