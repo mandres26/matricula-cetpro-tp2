@@ -56,7 +56,7 @@ public class LoginBean implements java.io.Serializable{
         usuario = usuarioDao.buscarUsuario(usuario);
         
         
-        if(usuario==null) {  
+        if(usuario!=null) {  
             loggedIn = true;  
             msg = new FacesMessage(FacesMessage.SEVERITY_INFO, "Bienvenido", usuario.getNombreUsuario());  
         } else {  
