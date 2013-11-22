@@ -1,0 +1,167 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://java.sun.com/jsf/core">
+    <h:head>
+        <title>Sistema Matricula CETPRO Carabayllo - Registro del Alumno</title>
+        <meta name="viewport" content="width=device-width"/>
+    </h:head>
+    <h:body>
+        <p:panel id="panel1" header="Datos Personales" style="margin-bottom:10px;">  
+  
+            <h:panelGrid columns="4">  
+
+                <h:outputLabel for="codigo" value="Codigo: " />  
+                <p:inputText id="codigo" value="4534534" required="true" label="codigo">  
+                    <f:validateLength minimum="2" />  
+                </p:inputText>  
+                <h:outputText value="#{pprBean.codigo}" />  
+                <br/>
+                
+                <h:outputLabel for="nombres" value="Nombres: *" />  
+                <p:inputText id="nombres" value="#{pprBean.nombres}" required="true" label="nombres">  
+                    <f:validateLength minimum="2" />  
+                </p:inputText>  
+                <h:outputText value="#{pprBean.firstname}" />  
+                <br/>
+
+                <h:outputLabel for="apPaterno" value="Ap. Paterno: *" />  
+                <p:inputText id="apPaterno" value="#{pprBean.apPaterno}" required="true" label="apPaterno"/>  
+                <h:outputText value="#{pprBean.apPaterno}" />  
+                <br/>
+
+                <h:outputLabel for="apMaterno" value="Ap. Materno: *" />  
+                <p:inputText id="apMaterno" value="#{pprBean.apMaterno}" required="true" label="apMaterno"/>  
+                <h:outputText value="#{pprBean.apMaterno}" />  
+                <br/>
+
+                <h:outputLabel for="dni" value="DNI: *" />  
+                <p:inputText id="dni" value="#{pprBean.dni}" required="true" label="dni"/>  
+                <h:outputText value="#{pprBean.dni}" />  
+                <br/>
+
+                <h:outputLabel for="sexo" value="Sexo: *" />  
+                <p:selectOneRadio id="sexo" value="#{formBean.sexo}">  
+                <f:selectItem itemLabel="Masculino" itemValue="1" />  
+                <f:selectItem itemLabel="Femenino" itemValue="2" />   
+                </p:selectOneRadio>  
+                <h:outputText value="#{pprBean.sexo}" />  
+                <br/>
+
+                <h:outputLabel for="fecNacimietno" value="Fecha Nacimiento: *" />             
+                <h:panelGrid columns="3">
+                <h:selectOneMenu id="dias" value="#{pprBean.dias}" required="true">  
+                    <f:selectItem itemLabel="dd" itemValue="" />  
+                    <f:selectItems value="#{pprBean.dias}" />  
+                </h:selectOneMenu>  
+                <h:selectOneMenu id="meses" value="#{pprBean.meses}" required="true">  
+                    <f:selectItem itemLabel="mm" itemValue="" />  
+                    <f:selectItems value="#{pprBean.meses}" />  
+                </h:selectOneMenu> 
+                <h:selectOneMenu id="años" value="#{pprBean.años}" required="true">  
+                    <f:selectItem itemLabel="yyyy" itemValue="" />  
+                    <f:selectItems value="#{pprBean.años}" />  
+                </h:selectOneMenu> 
+                <h:outputText value="#{pprBean.fecNacimietno}" />  
+                </h:panelGrid>
+
+            </h:panelGrid>  
+        </p:panel>  
+        <br/>
+        <h:panelGrid columns="4">
+            <p:panel id="panel2" header="Otros Datos" style="margin-bottom:10px;">  
+                <h:panelGrid columns="4">  
+
+                <h:outputLabel for="ocupacion" value="Ocupacion: "/>  
+                <h:selectOneMenu id="ocupacion" value="#{pprBean.ocupacion}" required="false" style="width: 220px">  
+                    <f:selectItem itemLabel="Seleccionar" itemValue="" />  
+                    <f:selectItems value="#{pprBean.ocupacion}" />  
+                </h:selectOneMenu> 
+                <h:outputText value="#{pprBean.ocupacion}" />
+                <br/>
+
+                <h:outputLabel for="estCivil" value="Estado Civil: " />  
+                <h:selectOneMenu id="estCivil" value="#{pprBean.estCivil}" required="false" style="width: 220px">  
+                    <f:selectItem itemLabel="Seleccionar" itemValue="" />  
+                    <f:selectItems value="#{pprBean.estCivil}" />  
+                </h:selectOneMenu> 
+                <h:outputText value="#{pprBean.estCivil}" />
+                <br/>
+
+                <h:outputLabel for="region" value="Region: " />  
+                <h:selectOneMenu id="region" value="#{pprBean.region}" required="false" style="width: 220px">  
+                    <f:selectItem itemLabel="Seleccionar" itemValue="" />  
+                    <f:selectItems value="#{pprBean.region}" />  
+                </h:selectOneMenu> 
+                <h:outputText value="#{pprBean.region}" />
+                <br/>
+
+                <h:outputLabel for="provincia" value="Provincia: " />  
+                <h:selectOneMenu id="provincia" value="#{pprBean.provincia}" required="false" style="width: 220px">  
+                    <f:selectItem itemLabel="Seleccionar" itemValue="" />  
+                    <f:selectItems value="#{pprBean.provincia}" />  
+                </h:selectOneMenu> 
+                <h:outputText value="#{pprBean.provincia}" />
+                <br/>
+
+                <h:outputLabel for="distrito" value="Distrito: " />  
+                <h:selectOneMenu id="distrito" value="#{pprBean.distrito}" required="false" style="width: 220px">  
+                    <f:selectItem itemLabel="Seleccionar" itemValue="" />  
+                    <f:selectItems value="#{pprBean.distrito}" />  
+                </h:selectOneMenu> 
+                <h:outputText value="#{pprBean.distrito}" />
+                <br/>
+
+                <h:outputLabel for="direccion" value="Direccion: " />  
+                <p:inputText id="direccion" value="#{pprBean.direccion}" required="true" label="direccion"/>
+                <h:outputText value="#{pprBean.direccion}" />
+
+                </h:panelGrid>  
+            </p:panel>  
+            
+            <p:panel id="panel3" header="Contacto" style="margin-bottom:10px;">  
+                <h:panelGrid columns="2">  
+
+                <h:outputLabel for="correo" value="Correo: "/>  
+                <p:inputText id="correo" value="#{pprBean.correo}" required="true" label="direccion"/>
+                <h:outputText value="#{pprBean.correo}" />
+                <br/><br/>
+
+                <h:outputLabel for="telefono" value="Telefono: " />  
+                <p:inputText id="telefono" value="#{pprBean.telefono}" required="true" label="direccion"/>
+                <h:outputText value="#{pprBean.telefono}" />
+                <br/><br/>
+
+                <h:outputLabel for="celular" value="Celular: " />  
+                <p:inputText id="celular" value="#{pprBean.celular}" required="true" label="direccion"/>
+                <h:outputText value="#{pprBean.celular}" />
+                   
+                
+                </h:panelGrid>  
+            </p:panel>  
+            
+            <p:panel id="panel4" header="Foto" style="margin-bottom:10px;">  
+                
+                <p:graphicImage value="/Resources/Images/user.png" style="width: 200px"/>
+                    <h:outputLabel for="subFoto" value="Subir Foto: " />  
+                    <h:outputText value="#{pprBean.subFoto}" />            
+            </p:panel> 
+            <br/>
+            <p:commandButton value="REGISTRAR" />    
+        </h:panelGrid>
+       
+        <script type="text/javascript">  
+            function abrir() {  
+                window.location="/SistemaMatriculaCETPROv1.0/view/index.jsf";
+            }  
+        </script>
+        
+    </h:body>
+</html>
