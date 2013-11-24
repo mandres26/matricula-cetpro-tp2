@@ -4,8 +4,8 @@
 <!-- Generated 17-nov-2013 16:20:47 by Hibernate Tools 3.6.0 -->
 <hibernate-mapping>
     <class name="com.matricula.model.Alumno" table="ALUMNO" catalog="matriculatp2">
-        <id name="idAlumno" type="int">
-            <column name="idAlumno" />
+        <id name="idAlumno" type="string">
+            <column name="idAlumno" length="15"/>
             <generator class="assigned" />
         </id>
         <property name="nombres" type="string">

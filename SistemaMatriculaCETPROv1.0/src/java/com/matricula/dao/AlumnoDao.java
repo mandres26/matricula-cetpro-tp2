@@ -14,5 +14,6 @@ import com.matricula.model.Alumno;
  */
 public interface AlumnoDao {
     public void añadirAlumno(Alumno alumno);
-    public int calcularMax();
+    public Object calcularMax();
+    public String calcularMax2();
 }

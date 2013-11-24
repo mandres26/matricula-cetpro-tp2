@@ -87,8 +87,9 @@ and open the template in the editor.
           <p:panel id="panel1" header="Datos Personales" style="margin-bottom:10px; height: 350px">  
               <h:panelGrid columns="2">  
                 <h:outputLabel for="codigo" value="Codigo: " />  
-                <p:inputText id="codigo" value="#{alumnoBean.codigo}" required="true" label="codigo" readonly="true" style="width: 270px"/>
-                
+                <p:inputText id="codigo" value="4534532" required="true" label="codigo" readonly="true" style="width: 270px">  
+                    <f:validateLength minimum="2" />  
+                </p:inputText>
                 <h:outputText/>
                 <br/>
                 
