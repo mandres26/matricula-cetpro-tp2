@@ -29,7 +29,7 @@ public class AlumnoDaoImpl implements AlumnoDao{
     public void añadirAlumno(Alumno alumno) {
         Connection cn = BD.getConexion();
         String sexo = alumno.getSexo().toString();
-        String sql = "INSERT INTO ALUMNO VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
+        String sql = "INSERT INTO ALUMNO VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
         System.out.println("NOMBRE:   "+alumno.getNombres()+"   "+alumno.getSexo());
         try {
             PreparedStatement pst= cn.prepareStatement(sql);
@@ -57,10 +57,12 @@ public class AlumnoDaoImpl implements AlumnoDao{
             System.out.println("11");
             pst.setString(12, alumno.getDomicilio());
             System.out.println("12");
-            pst.setString(13, alumno.getProvincia());
+            pst.setString(13, alumno.getDistrito());
             System.out.println("13");
-            pst.setString(14, alumno.getRegion());
+            pst.setString(14, alumno.getProvincia());
             System.out.println("14");
+            pst.setString(15, alumno.getRegion());
+            System.out.println("15");
             pst.execute();
             pst.close();
         } catch (Exception e) {

@@ -5,7 +5,7 @@
 <hibernate-mapping>
     <class name="com.matricula.model.Matricula" table="MATRICULA" catalog="matriculatp2">
         <composite-id name="id" class="com.matricula.model.MatriculaId">
-            <key-property name="alumnoIdAlumno" type="int">
+            <key-property name="alumnoIdAlumno" type="string">
                 <column name="ALUMNO_idAlumno" />
             </key-property>
             <key-property name="grupoIdGrupo" type="int">

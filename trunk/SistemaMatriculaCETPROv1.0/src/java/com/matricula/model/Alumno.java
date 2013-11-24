@@ -24,6 +24,7 @@ public class Alumno  implements java.io.Serializable {
      private Integer numFijo;
      private Integer numMovil;
      private String domicilio;
+     private String distrito;
      private String provincia;
      private String region;
      private Set<Matricula> matriculas = new HashSet<Matricula>(0);
@@ -159,9 +160,15 @@ public class Alumno  implements java.io.Serializable {
         this.matriculas = matriculas;
     }
 
+    public String getDistrito() {
+        return distrito;
+    }
 
+    public void setDistrito(String distrito) {
+        this.distrito = distrito;
+    }
 
-
+    
 }
 
 

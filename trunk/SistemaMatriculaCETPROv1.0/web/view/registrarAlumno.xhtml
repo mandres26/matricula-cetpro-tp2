@@ -86,45 +86,41 @@ and open the template in the editor.
               
           <p:panel id="panel1" header="Datos Personales" style="margin-bottom:10px; height: 350px">  
               <h:panelGrid columns="2">  
-                <h:outputLabel for="codigo" value="Codigo: " />  
-                <p:inputText id="codigo" value="#{alumnoBean.codigo}" required="true" label="codigo" readonly="true" style="width: 270px"/>
-                
+                  <h:outputLabel for="codigo" value="Codigo: "  style="width: 1800px"/>  
+                <p:inputText id="codigo" value="#{alumnoBean.codigo}" required="true" label="codigo" readonly="true" style="width: 250px"/>
                 <h:outputText/>
                 <br/>
                 
-                <h:outputLabel for="nombres" value="Nombres: *" />  
-                <p:inputText id="nombres" value="#{alumnoBean.alumno.nombres}" required="true" label="nombres" style="width: 270px">  
+                <h:outputLabel for="nombres" value="Nombres: " />  
+                <p:inputText id="nombres" value="#{alumnoBean.alumno.nombres}" required="true" label="nombres" style="width: 250px">  
                     <f:validateLength minimum="2" />  
                 </p:inputText> 
-                <p:message for="nombres"/>
-                <br/>
 
-                <h:outputLabel for="apPaterno" value="Ap. Paterno: *" />  
-                <p:inputText id="apPaterno" value="#{alumnoBean.alumno.apePaterno}" required="true" label="apPaterno" style="width: 270px"/>   
+                <h:outputLabel for="apPaterno" value="Ap. Paterno: " />  
+                <p:inputText id="apPaterno" value="#{alumnoBean.alumno.apePaterno}" required="true" label="apPaterno" style="width: 250px"/>   
+
+                
+                <h:outputLabel for="apMaterno" value="Ap. Materno: " />  
+                <p:inputText id="apMaterno" value="#{alumnoBean.alumno.apeMaterno}" required="true" label="apMaterno" style="width: 250px"/>  
                 <h:outputText/>
                 <br/>
                 
-                <h:outputLabel for="apMaterno" value="Ap. Materno: *" />  
-                <p:inputText id="apMaterno" value="#{alumnoBean.alumno.apeMaterno}" required="true" label="apMaterno" style="width: 270px"/>  
-                <h:outputText/>
-                <br/>
-                
-                <h:outputLabel for="dni" value="DNI: *" />  
-                <p:inputText id="dni" value="#{alumnoBean.alumno.dni}" required="true" label="dni" style="width: 270px"> 
+                <h:outputLabel for="dni" value="DNI: " />  
+                <p:inputText id="dni" value="#{alumnoBean.alumno.dni}" required="true" label="dni" style="width: 250px"> 
                     <f:validateLength minimum="8" maximum="8"/>
                 </p:inputText>
                 <h:outputText/>
                 <br/>
                 
-                <h:outputLabel for="sexo" value="Sexo: *" />  
-                <p:selectOneRadio id="sexo" value="#{alumnoBean.alumno.sexo}" style="width: 270px">  
+                <h:outputLabel for="sexo" value="Sexo: " />  
+                <p:selectOneRadio id="sexo" value="#{alumnoBean.alumno.sexo}" style="width: 250px">  
                 <f:selectItem itemLabel="Masculino" itemValue="M" />  
                 <f:selectItem itemLabel="Femenino" itemValue="F" />   
                 </p:selectOneRadio>  
                 <h:outputText/>
                 <br/>
 
-                <h:outputLabel value="Fecha Nacimiento: *" />             
+                <h:outputLabel value="Fecha Nacimiento: " />             
                 <h:panelGrid columns="3">
                     <h:selectOneMenu id="dias" value="#{alumnoBean.dia}" required="true">  
                         <f:selectItem itemLabel="dd" itemValue="" />  
@@ -159,6 +155,13 @@ and open the template in the editor.
                     </h:selectOneMenu> 
                     <h:outputText />
                     <br/>
+                    <h:outputLabel for="distrito" value="Distrito: " />  
+                    <h:selectOneMenu id="distrito" value="#{alumnoBean.alumno.distrito}" required="true" label="distrito" style="width: 220px">  
+                        <f:selectItem itemLabel="Seleccionar" itemValue="" />  
+                        <f:selectItems value="#{alumnoBean.distritos}" />  
+                    </h:selectOneMenu> 
+                    <h:outputText />
+                    <br/>
                     <h:outputLabel for="direccion" value="Direccion: " />  
                     <p:inputText id="direccion" value="#{alumnoBean.alumno.domicilio}" required="true" label="direccion" style="width: 280px"/>
                     <h:outputText />
@@ -170,20 +173,20 @@ and open the template in the editor.
             <p:panel id="panel3" header="Contacto" style="margin-bottom:10px; height: 350px">  
                 <h:panelGrid columns="2">  
                     <h:outputLabel for="correo" value="Correo: "/>  
-                    <p:inputText id="correo" value="#{alumnoBean.alumno.email}" required="true" label="correo" style="width: 270px"/>
+                    <p:inputText id="correo" value="#{alumnoBean.alumno.email}" required="true" label="correo" style="width: 200px"/>
                     <h:outputText/>
                     <br/><br/>
 
                     <h:outputLabel for="telefono" value="Telefono: " />  
-                    <p:inputText id="telefono" value="#{alumnoBean.alumno.numFijo}" required="true" label="telefono" style="width: 270px">
+                    <p:inputText id="telefono" value="#{alumnoBean.alumno.numFijo}" required="true" label="telefono" style="width: 150px">
                         <f:validateLength minimum="7" maximum="7"/>
                     </p:inputText>
                     <h:outputText />
                     <br/><br/>
 
                     <h:outputLabel for="celular" value="Celular: " />  
-                    <p:inputText id="celular" value="#{alumnoBean.alumno.numMovil}" required="true" label="celular" style="width: 270px">
-                        <f:validateLength minimum="8" maximum="8"/>
+                    <p:inputText id="celular" value="#{alumnoBean.alumno.numMovil}" required="true" label="celular" style="width: 150px">
+                        <f:validateLength minimum="9" maximum="9"/>
                     </p:inputText>
                     <h:outputText />
                 </h:panelGrid>  
@@ -195,7 +198,7 @@ and open the template in the editor.
                 
                 <h:form enctype="multipart/form-data">    
                     <p:messages showDetail="true"/>  
-                    <p:fileUpload value="#{fileUploadController.file}" mode="simple"/>  
+                    <p:fileUpload value="#{fileUploadController.file}" mode="simple" style="font-size: 10px"/>  
                     <!-->
                     <p:commandButton value="Submit" ajax="false" actionListener="#{fileUploadController.upload}"/>  </!-->
                 </h:form>  

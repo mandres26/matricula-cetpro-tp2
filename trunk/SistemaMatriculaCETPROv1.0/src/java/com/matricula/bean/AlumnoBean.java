@@ -31,9 +31,18 @@ public class AlumnoBean implements Serializable {
     private int dias[] = {1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,19,20,21,22,23,24,25,26,27,28,29,30};
     private int meses[] = {1,2,3,4,5,6,7,8,9,10,11,12};
     private int años[] = {1991,1992,1993};
-    private String regiones[] = {"Lima","Callao","Ica"};
-    private String provincias[] = {"Lima","Chosica","etc"};
+    private String regiones[] = {"Lima","Callao"};
+    private String provincias[] = {"Barranca","Canta","Cañete","Cajatambo","Huaral","Huarochiri","Huaura","Lima","Oyon","Yauyos"};
+    private String distritos[] = {"Lima","Ancón","Ate","Barranco","Breña","Carabayllo","Chaclacayo",
+        "Chorrillos","Cieneguilla","Comas","El Agustino","Independencia","Jesús María","La Molina",
+        "La Victoria","Lince","Los Olivos","Lurigancho-Chosica","Lurin","Magdalena del Mar",
+        "Pueblo Libre","Miraflores","Pachacámac","Pucusana","Puente Piedra","Punta Hermosa","Punta Negra",
+        "Rímac","San Bartolo","San Borja","San Isidro","San Juan de Lurigancho" +"San Juan de Miraflores",
+        "San Luis","San Martín de Porres","San Miguel","Santa Anita","Santa María del Mar","Santa Rosa",
+        "Santiago de Surco","Surquillo","Villa El Salvador","Villa María del Triunfo"};
     private String codigo;
+    private String provlist [][]={{"Barranca","Canta","Cañete","Cajatambo","Huaral","Huarochiri","Huaura","Oyon","Yauyos"},{"Callao"}};
+    private String distlist [][]={{"Barranca","Paramonga"},{"Canta"},{"Cañete"},{"Cajatambo"},{"Huaral"},{"Huarochiri"},{"Huaura"},{"Oyon"},{"Yauyos"},{"Callao","Bellavista","Carmen de la Legua","La Perla","La Punta","Ventanilla"}};
     /**
      * Creates a new instance of AlumnoBean
      */
@@ -42,7 +51,9 @@ public class AlumnoBean implements Serializable {
 
     public String getCodigo() {
         AlumnoDao alumnoDao = new AlumnoDaoImpl();
-        codigo=alumnoDao.calcularMax2()+1;
+        codigo=alumnoDao.calcularMax2().substring(1);
+        long valor = Long.parseLong(codigo)+1;
+        codigo = "0"+String.valueOf(valor);
         return codigo;
     }
 
@@ -124,6 +135,15 @@ public class AlumnoBean implements Serializable {
     public void setProvincias(String[] provincias) {
         this.provincias = provincias;
     }
+
+    public String[] getDistritos() {
+        return distritos;
+    }
+
+    public void setDistritos(String[] distritos) {
+        this.distritos = distritos;
+    }
+    
     
     public void añadirAlumno(ActionEvent actionEvent){
         RequestContext context = RequestContext.getCurrentInstance();
@@ -132,8 +152,8 @@ public class AlumnoBean implements Serializable {
         
         AlumnoDao alumnoDao = new AlumnoDaoImpl();
         //alumno.setIdAlumno(Integer.parseInt(alumnoDao.calcularMax().toString())+1);
-        alumno.setIdAlumno(alumnoDao.calcularMax2()+1);
-        Date fecha = Date.valueOf(año+"-"+mes+"-"+dia); 
+        Date fecha = Date.valueOf(año+"-"+mes+"-"+dia);
+        alumno.setIdAlumno(getCodigo());
         alumno.setFecNacimiento(fecha);
         Calendar cal=Calendar.getInstance(); 
         int fa = Integer.valueOf(cal.get(cal.YEAR));
