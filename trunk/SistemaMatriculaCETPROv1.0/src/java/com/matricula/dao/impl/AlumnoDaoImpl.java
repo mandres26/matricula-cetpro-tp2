@@ -14,6 +14,7 @@ import java.math.BigDecimal;
 import java.sql.Connection;
 import java.sql.Date;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import org.hibernate.Query;
 import org.hibernate.Session;
 
@@ -32,7 +33,7 @@ public class AlumnoDaoImpl implements AlumnoDao{
         System.out.println("NOMBRE:   "+alumno.getNombres()+"   "+alumno.getSexo());
         try {
             PreparedStatement pst= cn.prepareStatement(sql);
-            pst.setInt(1, alumno.getIdAlumno());
+            pst.setString(1, alumno.getIdAlumno());
             System.out.println("1");
             pst.setString(2, alumno.getNombres());
             System.out.println("2");
@@ -68,11 +69,29 @@ public class AlumnoDaoImpl implements AlumnoDao{
     }
 
     @Override
-    public int calcularMax() {
-        int valor;
+    public Object calcularMax() {
         Session session = HibernateUtil.getSessionFactory().openSession();
-        String hql ="";
-        return 0;
+        String hql ="select max(idAlumno) from Alumno";
+        Query query = session.createQuery(hql);
+        return query.uniqueResult();
+    }
+    
+    public String calcularMax2() {
+        Connection cn = BD.getConexion();
+        String valor = null;
+        String sql ="select max(idAlumno) from ALUMNO";
+        try {
+            PreparedStatement pst= cn.prepareStatement(sql);
+            pst.execute();
+            ResultSet resultset = pst.getResultSet();
+            if (resultset.next()) {
+                valor = resultset.getString(1);
+            }
+            pst.close();
+        } catch (Exception e) {
+            System.err.println("Error al calcularMax2, en AlumnoDaoImpl: "+e);
+        }
+        return valor;
     }
     
 }

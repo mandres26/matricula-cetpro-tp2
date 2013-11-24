@@ -12,8 +12,12 @@ import com.matricula.model.Alumno;
 import java.io.Serializable;
 import java.sql.Date;
 import java.util.Calendar;
+import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
+import javax.faces.context.FacesContext;
+import javax.faces.event.ActionEvent;
+import org.primefaces.context.RequestContext;
 
 /**
  *
@@ -29,10 +33,21 @@ public class AlumnoBean implements Serializable {
     private int años[] = {1991,1992,1993};
     private String regiones[] = {"Lima","Callao","Ica"};
     private String provincias[] = {"Lima","Chosica","etc"};
+    private String codigo;
     /**
      * Creates a new instance of AlumnoBean
      */
     public AlumnoBean() {
+    }
+
+    public String getCodigo() {
+        AlumnoDao alumnoDao = new AlumnoDaoImpl();
+        codigo=alumnoDao.calcularMax2()+1;
+        return codigo;
+    }
+
+    public void setCodigo(String codigo) {
+        this.codigo = codigo;
     }
 
     public Alumno getAlumno() {
@@ -110,19 +125,31 @@ public class AlumnoBean implements Serializable {
         this.provincias = provincias;
     }
     
-    public void añadirAlumno(){
+    public void añadirAlumno(ActionEvent actionEvent){
+        RequestContext context = RequestContext.getCurrentInstance();
+        FacesMessage msg = null;
+        boolean registrado = false;
+        
+        AlumnoDao alumnoDao = new AlumnoDaoImpl();
+        //alumno.setIdAlumno(Integer.parseInt(alumnoDao.calcularMax().toString())+1);
+        alumno.setIdAlumno(alumnoDao.calcularMax2()+1);
         Date fecha = Date.valueOf(año+"-"+mes+"-"+dia); 
         alumno.setFecNacimiento(fecha);
         Calendar cal=Calendar.getInstance(); 
         int fa = Integer.valueOf(cal.get(cal.YEAR));
         alumno.setEdad(fa-año);
-        System.out.println("FECHA: "+año+"-"+mes+"-"+dia+"      ->"+alumno.getEdad());
-        AlumnoDao alumnoDao = new AlumnoDaoImpl();
+        System.out.println("FECHA: "+año+"-"+mes+"-"+dia+"      ->"+alumno.getEdad()+"   :"+alumno.getIdAlumno());
+        
         try {
             alumnoDao.añadirAlumno(alumno);
+            msg = new FacesMessage(FacesMessage.SEVERITY_INFO, "Registrado: ", alumno.getNombres());  
+            registrado = true;
         } catch (Exception e) {
             System.out.println("Error al añadir alumno, en AlumnoBean: "+e);
         } 
+        FacesContext.getCurrentInstance().addMessage(null, msg);  
+        context.addCallbackParam("regAlu", registrado);  
+        alumno=new Alumno();
     }
 
 

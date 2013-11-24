@@ -12,7 +12,7 @@ import java.util.Set;
 public class Alumno  implements java.io.Serializable {
 
 
-     private int idAlumno;
+     private String idAlumno;
      private String nombres;
      private String apePaterno;
      private String apeMaterno;
@@ -32,10 +32,10 @@ public class Alumno  implements java.io.Serializable {
     }
 
 	
-    public Alumno(int idAlumno) {
+    public Alumno(String idAlumno) {
         this.idAlumno = idAlumno;
     }
-    public Alumno(int idAlumno, String nombres, String apePaterno, String apeMaterno, Date fecNacimiento, Character sexo, Integer dni, String email, Integer edad, Integer numFijo, Integer numMovil, String domicilio, String provincia, String region, Set<Matricula> matriculas) {
+    public Alumno(String idAlumno, String nombres, String apePaterno, String apeMaterno, Date fecNacimiento, Character sexo, Integer dni, String email, Integer edad, Integer numFijo, Integer numMovil, String domicilio, String provincia, String region, Set<Matricula> matriculas) {
        this.idAlumno = idAlumno;
        this.nombres = nombres;
        this.apePaterno = apePaterno;
@@ -53,11 +53,11 @@ public class Alumno  implements java.io.Serializable {
        this.matriculas = matriculas;
     }
    
-    public int getIdAlumno() {
+    public String getIdAlumno() {
         return this.idAlumno;
     }
     
-    public void setIdAlumno(int idAlumno) {
+    public void setIdAlumno(String idAlumno) {
         this.idAlumno = idAlumno;
     }
     public String getNombres() {
