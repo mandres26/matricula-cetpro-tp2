@@ -19,6 +19,7 @@ import javax.faces.context.FacesContext;
 import javax.faces.event.ActionEvent;
 import javax.servlet.ServletContext;
 import javax.servlet.http.HttpSession;
+import org.hibernate.Session;
 import org.primefaces.context.RequestContext;
 
 /**
@@ -61,7 +62,7 @@ public class LoginBean implements java.io.Serializable{
             msg = new FacesMessage(FacesMessage.SEVERITY_INFO, "Bienvenido", usuario.getNombreUsuario());  
         } else {  
             loggedIn = false;  
-            msg = new FacesMessage(FacesMessage.SEVERITY_WARN, "Login Error", "Datos Incorrectos");  
+            msg = new FacesMessage(FacesMessage.SEVERITY_WARN, "Error en el logueo", "Datos Incorrectos");  
         }  
           
         FacesContext.getCurrentInstance().addMessage(null, msg);  
@@ -73,10 +74,16 @@ public class LoginBean implements java.io.Serializable{
         String ctxPath = ((ServletContext) ctx.getContext()).getContextPath();
         try {
           ((HttpSession) ctx.getSession(false)).invalidate();
-          ctx.redirect(ctxPath + "/View/login.jsf");
+          ctx.invalidateSession();
+          ctx.redirect(ctxPath + "/view/login.jsf");
         } catch (Exception ex) {
           ex.printStackTrace();
         }
     }
 
+    public void logout2(){ 
+        FacesContext fc = FacesContext.getCurrentInstance();  
+        Session session = (Session) fc.getExternalContext().getSession(false);  
+        session.close();  
+    }
 }

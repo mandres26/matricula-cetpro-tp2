@@ -1,0 +1,214 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://java.sun.com/jsf/core">
+
+    <h:head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+        <link href="./../Resources/CSS/default.css" rel="stylesheet" type="text/css" />
+        <link href="./../Resources/CSS/cssLayout.css" rel="stylesheet" type="text/css" />
+        <title>Principal</title>
+        <link rel="stylesheet" href="Resources/CSS/estilos.css" />
+    </h:head>
+
+    <h:body>
+        <div id="top" class="top">
+            <p:panel style="alignment-adjust: central">
+            <p:graphicImage value="/Resources/images/titulo.jpg" style="width: 1300px"/>
+            </p:panel>
+        </div>
+        
+        
+        <h:form id="frm">
+            <div id="content" class="center_content">
+                <h:form>  
+                    <p:growl id="messages"/>   
+                    <p:menubar>  
+                        <p:menuitem value="Inicio" icon="ui-icon-home" url="/view/index.jsf"/>
+
+                        <p:submenu label="Editar" icon="ui-icon-pencil">  
+                            <p:menuitem value="Guardar" url="#" icon="ui-icon-disk" />  
+                            <p:menuitem value="Imprimir" url="#" icon="ui-icon-print" />  
+                        </p:submenu>  
+
+                        <p:submenu label="Acciones" icon="ui-icon-gear">  
+                            <p:submenu label="Alumno" icon="ui-icon-refresh">  
+                                <p:menuitem value="Registrar Alumno" actionListener="#{menuBean.save}" icon="ui-icon-disk" update="messages"/>  
+                                <p:menuitem value="Modificar Alumno" actionListener="#{menuBean.update}" icon="ui-icon-arrowrefresh-1-w" update="messages"/>  
+                                <p:menuitem value="Consultar datos de Alumno" actionListener="#{menuBean.update}" icon="ui-icon-search" update="messages"/>  
+                            </p:submenu>  
+                            
+                            <p:menuitem value="Registrar Docente" actionListener="#{menuBean.delete}" icon="ui-icon-disk" update="messages" ajax="false"/>
+                            
+                            <p:submenu label="Resolucion Directoral" icon="ui-icon-newwin">  
+                                <p:menuitem value="Registrar" actionListener="#{menuBean.delete}" icon="ui-icon-disk" update="messages" ajax="false"/>
+                                <p:menuitem value="Mantener especialidaes" actionListener="#{menuBean.delete}" icon="ui-icon-disk" update="messages" ajax="false"/>
+                            </p:submenu>  
+                            
+                            <p:submenu label="Programacion Curricular" icon="ui-icon-newwin">  
+                                <p:menuitem value="Registrar" actionListener="#{menuBean.delete}" icon="ui-icon-disk" update="messages" ajax="false"/>
+                                <p:menuitem value="Consultar modulos" actionListener="#{menuBean.delete}" icon="ui-icon-disk" update="messages" ajax="false"/>
+                            </p:submenu> 
+                             
+                            <p:menuitem value="Realizar Matricula" actionListener="#{menuBean.delete}" icon="ui-icon-disk" update="messages" ajax="false"/>  
+                        </p:submenu>   
+                        
+                        <p:submenu label="Ayuda" icon="ui-icon-help">  
+                            <p:menuitem value="Contenidos" url="#" />  
+                            <p:submenu label="Busqueda" icon="ui-icon-search">  
+                                <p:submenu label="Text">  
+                                    <p:menuitem value="Workspace" url="#" />  
+                                </p:submenu>  
+                                <p:menuitem value="File" url="#" />  
+                            </p:submenu>  
+                        </p:submenu>  
+
+                        <f:facet name="options">  
+                            <p:inputText style="margin-right:10px"/>  
+                            <p:commandButton type="button" value="Logout" icon="ui-icon-extlink" />  
+                        </f:facet>  
+                    </p:menubar>  
+                </h:form>
+                <br/>
+                
+          <!-->  CONTENIDO </!-->      
+                
+          <h:panelGrid columns="4">  
+              
+          <p:panel id="panel1" header="Datos Personales" style="margin-bottom:10px; height: 350px">  
+              <h:panelGrid columns="2">  
+                <h:outputLabel for="codigo" value="Codigo: " />  
+                <p:inputText id="codigo" value="4534532" required="true" label="codigo" readonly="true" style="width: 270px">  
+                    <f:validateLength minimum="2" />  
+                </p:inputText>
+                <h:outputText/>
+                <br/>
+                
+                <h:outputLabel for="nombres" value="Nombres: *" />  
+                <p:inputText id="nombres" value="#{alumnoBean.alumno.nombres}" required="true" label="nombres" style="width: 270px">  
+                    <f:validateLength minimum="2" />  
+                </p:inputText> 
+                <h:outputText/>
+                <br/>
+
+                <h:outputLabel for="apPaterno" value="Ap. Paterno: *" />  
+                <p:inputText id="apPaterno" value="#{alumnoBean.alumno.apePaterno}" required="true" label="apPaterno" style="width: 270px"/>   
+                <h:outputText/>
+                <br/>
+                
+                <h:outputLabel for="apMaterno" value="Ap. Materno: *" />  
+                <p:inputText id="apMaterno" value="#{alumnoBean.alumno.apeMaterno}" required="true" label="apMaterno" style="width: 270px"/>  
+                <h:outputText/>
+                <br/>
+                
+                <h:outputLabel for="dni" value="DNI: *" />  
+                <p:inputText id="dni" value="#{alumnoBean.alumno.dni}" required="true" label="dni" style="width: 270px"/>  
+                <h:outputText/>
+                <br/>
+                
+                <h:outputLabel for="sexo" value="Sexo: *" />  
+                <p:selectOneRadio id="sexo" value="#{alumnoBean.alumno.sexo}" style="width: 270px">  
+                <f:selectItem itemLabel="Masculino" itemValue="M" />  
+                <f:selectItem itemLabel="Femenino" itemValue="F" />   
+                </p:selectOneRadio>  
+                <h:outputText/>
+                <br/>
+
+                <h:outputLabel value="Fecha Nacimiento: *" />             
+                <h:panelGrid columns="3">
+                    <h:selectOneMenu id="dias" value="#{alumnoBean.dia}" required="true">  
+                        <f:selectItem itemLabel="dd" itemValue="" />  
+                        <f:selectItems value="#{alumnoBean.dias}" />  
+                    </h:selectOneMenu>  
+                    <h:selectOneMenu id="meses" value="#{alumnoBean.mes}" required="true">  
+                        <f:selectItem itemLabel="mm" itemValue="" />  
+                        <f:selectItems value="#{alumnoBean.meses}" />  
+                    </h:selectOneMenu> 
+                    <h:selectOneMenu id="años" value="#{alumnoBean.año}" required="true">  
+                        <f:selectItem itemLabel="yyyy" itemValue="" />  
+                        <f:selectItems value="#{alumnoBean.años}" />  
+                    </h:selectOneMenu> 
+                    <h:outputText />  
+                </h:panelGrid>
+
+            </h:panelGrid>  
+        </p:panel>  
+        
+            <p:panel id="panel2" header="Otros Datos" style="margin-bottom:10px; height: 350px">  
+                <h:panelGrid columns="1">  
+                    <h:outputLabel for="region" value="Region: " />  
+                    <h:selectOneMenu id="region" value="#{alumnoBean.alumno.region}" required="false" style="width: 220px">  
+                        <f:selectItem itemLabel="Seleccionar" itemValue="" />  
+                        <f:selectItems value="#{alumnoBean.regiones}" />  
+                    </h:selectOneMenu> 
+                    <br/>
+                    <h:outputLabel for="provincia" value="Provincia: " />  
+                    <h:selectOneMenu id="provincia" value="#{alumnoBean.alumno.provincia}" required="false" style="width: 220px">  
+                        <f:selectItem itemLabel="Seleccionar" itemValue="" />  
+                        <f:selectItems value="#{alumnoBean.provincias}" />  
+                    </h:selectOneMenu> 
+                    <h:outputText />
+                    <br/>
+                    <h:outputLabel for="direccion" value="Direccion: " />  
+                    <p:inputText id="direccion" value="#{alumnoBean.alumno.domicilio}" required="true" label="direccion" style="width: 280px"/>
+                    <h:outputText />
+                </h:panelGrid>  
+            </p:panel>
+              
+          
+            
+            <p:panel id="panel3" header="Contacto" style="margin-bottom:10px; height: 350px">  
+                <h:panelGrid columns="2">  
+                    <h:outputLabel for="correo" value="Correo: "/>  
+                    <p:inputText id="correo" value="#{alumnoBean.alumno.email}" required="true" label="direccion" style="width: 270px"/>
+                    <h:outputText/>
+                    <br/><br/>
+
+                    <h:outputLabel for="telefono" value="Telefono: " />  
+                    <p:inputText id="telefono" value="#{alumnoBean.alumno.numFijo}" required="true" label="direccion" style="width: 270px"/>
+                    <h:outputText />
+                    <br/><br/>
+
+                    <h:outputLabel for="celular" value="Celular: " />  
+                    <p:inputText id="celular" value="#{alumnoBean.alumno.numMovil}" required="true" label="direccion" style="width: 270px"/>
+                    <h:outputText />
+                </h:panelGrid>  
+            </p:panel>  
+            
+            <p:panel id="panel4" header="Foto" style="margin-bottom:10px;">          
+                <p:graphicImage id="fotoimg" value="/Resources/images/user.png" style="width: 280px"/>
+                <br/>
+                
+                <h:form enctype="multipart/form-data">    
+                    <p:messages showDetail="true"/>  
+                    <p:fileUpload value="#{fileUploadController.file}" mode="simple"/>  
+                    <p:commandButton value="Submit" ajax="false" actionListener="#{fileUploadController.upload}"/>  
+                </h:form>  
+            </p:panel> 
+        
+        </h:panelGrid>
+                
+            <br/>
+            <p:commandButton value="REGISTRAR" action="#{alumnoBean.añadirAlumno()}" oncomplete="abrir()" style="width: 200px; font-size: 25px;"/>    
+        
+       
+        <script type="text/javascript">  
+            function abrir() {  
+                window.location="/SistemaMatriculaCETPROv1.0/view/index.jsf";
+            }  
+        </script>
+        
+    </div>
+    </h:form>
+        
+        
+    </h:body>
+</html>

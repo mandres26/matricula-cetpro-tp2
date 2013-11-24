@@ -21,7 +21,6 @@ public class UsuarioDaoImpl implements UsuarioDao{
     @Override
     public Usuario buscarUsuario(Usuario usuario) {
         Session session = HibernateUtil.getSessionFactory().openSession();
-        //String sql = "select p from Persona p where personaCodigoSistema=:user and personaPasswordSistema=:pass";
         String sql = "select u from Usuario u "
                 + " where u.nombreUsuario=:user "
                 + " and u.contraseniaUsuario=:pass";
