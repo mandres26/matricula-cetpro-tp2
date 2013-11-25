@@ -37,7 +37,7 @@
                             <p:submenu label="Alumno" icon="ui-icon-refresh">  
                                 <p:menuitem value="Registrar Alumno" url="/view/registrarAlumno.jsf" icon="ui-icon-disk" update="messages"/>  
                                 <p:menuitem value="Modificar Alumno" actionListener="#{menuBean.update}" icon="ui-icon-arrowrefresh-1-w" update="messages"/>  
-                                <p:menuitem value="Consultar datos de Alumno" actionListener="#{menuBean.update}" icon="ui-icon-search" update="messages"/>  
+                                <p:menuitem value="Consultar datos de Alumno" url="/view/buscarAlumno.jsf" actionListener="#{menuBean.update}" icon="ui-icon-search" update="messages"/>  
                             </p:submenu>  
                             
                             <p:menuitem value="Registrar Docente" actionListener="#{menuBean.delete}" icon="ui-icon-disk" update="messages" ajax="false"/>
