@@ -9,6 +9,7 @@ package com.matricula.dao.impl;
 import com.matricula.dao.UsuarioDao;
 import com.matricula.model.Usuario;
 import com.matricula.util.HibernateUtil;
+import com.matricula.util.Util;
 import org.hibernate.Query;
 import org.hibernate.Session;
 
@@ -21,6 +22,8 @@ public class UsuarioDaoImpl implements UsuarioDao{
     @Override
     public Usuario buscarUsuario(Usuario usuario) {
         Session session = HibernateUtil.getSessionFactory().openSession();
+        Util.setCurrentSession(session);
+        //String sql = "select p from Persona p where personaCodigoSistema=:user and personaPasswordSistema=:pass";
         String sql = "select u from Usuario u "
                 + " where u.nombreUsuario=:user "
                 + " and u.contraseniaUsuario=:pass";
