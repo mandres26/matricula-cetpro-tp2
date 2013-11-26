@@ -7,13 +7,20 @@
 package com.matricula.dao;
 
 import com.matricula.model.Alumno;
+import java.util.List;
 
 /**
  *
  * @author FELIPE
  */
 public interface AlumnoDao {
+
+    
+
+    
     public void añadirAlumno(Alumno alumno);
     public Object calcularMax();
     public String calcularMax2();
+    /*de buscar Alumno*/
+    public  List<Alumno> cargarAlumnos();
 }
