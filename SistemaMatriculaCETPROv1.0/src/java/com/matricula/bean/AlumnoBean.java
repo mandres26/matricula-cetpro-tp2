@@ -12,6 +12,7 @@ import com.matricula.model.Alumno;
 import java.io.Serializable;
 import java.sql.Date;
 import java.util.Calendar;
+import java.util.List;
 import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
@@ -42,7 +43,13 @@ public class AlumnoBean implements Serializable {
         "Santiago de Surco","Surquillo","Villa El Salvador","Villa María del Triunfo"};
     private String codigo;
     private String provlist [][]={{"Barranca","Canta","Cañete","Cajatambo","Huaral","Huarochiri","Huaura","Oyon","Yauyos"},{"Callao"}};
-    private String distlist [][]={{"Barranca","Paramonga"},{"Canta"},{"Cañete"},{"Cajatambo"},{"Huaral"},{"Huarochiri"},{"Huaura"},{"Oyon"},{"Yauyos"},{"Callao","Bellavista","Carmen de la Legua","La Perla","La Punta","Ventanilla"}};
+    private String distlist [][]={{"Barranca","Paramonga"},{"Canta"},{"Cañete"},{"Cajatambo"},{"Huaral"},{"Huarochiri"},{"Huaura"},{"Oyon"},{"Yauyos"},{"Callao","Bellavista","Carmen de la Legua","La Perla","La Punta","Ventanilla"}};    
+    /*atributos para buscar alumno*/
+    private List<Alumno> alumnos;    
+    private List<Alumno>  alumnosFiltrados;
+    private Alumno alumnoSeleccionado;
+    
+    
     /**
      * Creates a new instance of AlumnoBean
      */
@@ -171,6 +178,38 @@ public class AlumnoBean implements Serializable {
         context.addCallbackParam("regAlu", registrado);  
         alumno=new Alumno();
     }
+    
+    /*de buscar alumno*/
+
+    public List<Alumno> getAlumnos() {
+        return alumnos;
+    }
+
+    public void setAlumnos(List<Alumno> alumnos) {
+        this.alumnos = alumnos;
+    }
+
+    public List<Alumno> getAlumnosFiltrados() {
+        return alumnosFiltrados;
+    }
+
+    public void setAlumnosFiltrados(List<Alumno> alumnosFiltrados) {
+        this.alumnosFiltrados = alumnosFiltrados;
+    }
+
+    public Alumno getAlumnoSeleccionado() {
+        return alumnoSeleccionado;
+    }
+
+    public void setAlumnoSeleccionado(Alumno alumnoSeleccionado) {
+        this.alumnoSeleccionado = alumnoSeleccionado;
+    }
+    
+    public void cargarAlumnos(){
+    AlumnoDao al=new AlumnoDaoImpl();
+    alumnos=al.cargarAlumnos();    
+    }
+    
 
 
 }
