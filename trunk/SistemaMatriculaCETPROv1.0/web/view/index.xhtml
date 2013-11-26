@@ -95,6 +95,9 @@
                             but given to ruthless violence whenever anything stands against the good of the family." />  
                     </h:panelGrid>  
                 </p:fieldset>
+                
+                <p:commandButton id="btnRegistrarRD" update="frm" oncomplete="abrir2()" icon="ui-icon-load"/>
+                
             </div>
         </h:form>
         
@@ -111,6 +114,10 @@
                 window.location="/SistemaMatriculaCETPROv1.0/view/registrarAlumno.jsf";
             } 
         </script>
-        
+        <script type="text/javascript">  
+            function abrir2() {  
+                window.location="/SistemaMatriculaCETPROv1.0/view/registrarRD.jsf";
+            }  
+        </script>
     </h:body>
 </html>
