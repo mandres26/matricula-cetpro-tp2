@@ -15,8 +15,10 @@ import java.sql.Connection;
 import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.util.List;
 import org.hibernate.Query;
 import org.hibernate.Session;
+import org.hibernate.Transaction;
 
 /**
  *
@@ -95,5 +97,11 @@ public class AlumnoDaoImpl implements AlumnoDao{
         }
         return valor;
     }
-    
+    public  List<Alumno> cargarAlumnos(){
+     Session session = HibernateUtil.getSessionFactory().openSession();
+        Transaction t = session.beginTransaction();
+        List lista = session.createQuery("from Alumno").list();
+        t.commit();
+        return lista;
+    }
 }
