@@ -33,36 +33,53 @@
                             <p:menuitem value="Imprimir" url="#" icon="ui-icon-print" />  
                         </p:submenu>   
 
-                        <p:submenu label="Acciones" icon="ui-icon-gear">  
-                            <p:submenu label="Alumno" icon="ui-icon-refresh">  
-                                <p:menuitem value="Registrar Alumno" url="/view/registrarAlumno.jsf" icon="ui-icon-disk" update="messages"/>  
-                                <p:menuitem value="Modificar Alumno" actionListener="#{menuBean.update}" icon="ui-icon-arrowrefresh-1-w" update="messages"/>  
-                                <p:menuitem value="Consultar datos de Alumno" url="/view/buscarAlumno.jsf" actionListener="#{menuBean.update}" icon="ui-icon-search" update="messages"/>  
-                            </p:submenu>  
+                       <p:submenu label="Acciones" icon="ui-icon-gear">  
+                            <p:submenu label="Registros">
+                                <p:menuitem value="Registrar Alumno" url="/view/registrarAlumno.jsf"/>
+                                <p:menuitem value="Registrar Docente" url="/view/index.jsf"/>
+                                <p:menuitem value="Registrar Resolucion Directoral" url="/view/index.jsf"/>
+                                <p:menuitem value="Registrar Programacion Curricular" url="/view/index.jsf"/>
+                                <p:menuitem value="Registrar Matricula" url="/view/index.jsf"/>
+                            </p:submenu>
+                       </p:submenu>
+ 
+                            <p:submenu label="Mantenimientos">
+                                <p:menuitem value="Modificar Alumno" url="/view/index.jsf"/>
+                                <p:menuitem value="Mantener Docente" url="/view/index.jsf"/>
+                                <p:menuitem value="Mantener Especialidades" url="/view/index.jsf"/>
+                                <p:menuitem value="Mantener Programacion Curricular" url="/view/index.jsf"/>
+                           
+                        
+                            <p:submenu label="Consultas">
+                                <p:menuitem value="Consutar Alumno" url="/view/index.jsf"/>
+                                <p:menuitem value="Consultar Modulos" url="/view/index.jsf"/>
+                                <p:menuitem value="Consultar Programacion Curricular" url="/view/index.jsf"/>
+                            </p:submenu>
                             
                             <p:menuitem value="Registrar Docente" actionListener="#{menuBean.delete}" icon="ui-icon-disk" update="messages" ajax="false"/>
                             
-                            <p:submenu label="Resolucion Directoral" icon="ui-icon-newwin">  
-                                <p:menuitem value="Registrar" actionListener="#{menuBean.delete}" icon="ui-icon-disk" update="messages" ajax="false"/>
-                                <p:menuitem value="Mantener especialidaes" actionListener="#{menuBean.delete}" icon="ui-icon-disk" update="messages" ajax="false"/>
-                            </p:submenu>  
                             
-                            <p:submenu label="Programacion Curricular" icon="ui-icon-newwin">  
-                                <p:menuitem value="Registrar" actionListener="#{menuBean.delete}" icon="ui-icon-disk" update="messages" ajax="false"/>
-                                <p:menuitem value="Consultar modulos" actionListener="#{menuBean.delete}" icon="ui-icon-disk" update="messages" ajax="false"/>
-                            </p:submenu> 
-                             
+            
                             <p:menuitem value="Realizar Matricula" actionListener="#{menuBean.delete}" icon="ui-icon-disk" update="messages" ajax="false"/>  
-                        </p:submenu>   
+                        </p:submenu>  
+                        
+                        
+                        
                         
                         <p:submenu label="Ayuda" icon="ui-icon-help">  
-                            <p:menuitem value="Contenidos" url="#" />  
+                            <p:submenu label="Contenidos" icon="ui-icon-search">  
+                                <p:menuitem value="Manual de usuario" url="#" />  
+                                <p:menuitem value="Manual del Sistema" url="#" /> 
+                            </p:submenu>    
                             <p:submenu label="Busqueda" icon="ui-icon-search">  
                                 <p:submenu label="Text">  
                                     <p:menuitem value="Workspace" url="#" />  
                                 </p:submenu>  
                                 <p:menuitem value="File" url="#" />  
                             </p:submenu>  
+                            <p:menuitem value="Manual del Sistema" ajax="false" onclick="PrimeFaces.monitorDownload(start, stop)">
+                                <p:fileDownload value="#" />
+                            </p:menuitem>
                         </p:submenu> 
 
                         <f:facet name="options">  
@@ -77,10 +94,11 @@
                     <h:panelGrid columns="2" cellpadding="10">  
                         <p:graphicImage value="/Resources/images/matricula.png"  onclick="gotoRegistrarAlumno()" style="cursor: pointer"/>  
                         <h:outputText  
-                            value="The story begins as Don Vito Corleone, the head of a New York Mafia family, oversees his daughter's wedding.  
-                            His beloved son Michael has just come home from the war, but does not intend to become part of his father's business. T  
-                            hrough Michael's life the nature of the family business becomes clear. The business of the family is just like the head of the family, kind and benevolent to those who give respect,  
-                            but given to ruthless violence whenever anything stands against the good of the family." />
+                            value="Este proyecto es un esfuerzo por mejorar la calidad de la educación de nuestra población y 
+                            encontrando la necesidad que cuenta esta institución se nos propone el reto de poder mejorar sus 
+                            procesos y cargar con todo el proceso de automatización que esto conlleva. Todo ello con fines 
+                            académicos que competen.
+                            El proyecto lleva como nombre 'Sistema de Matrícula – CETPRO Carabayllo'." />
                         <p:commandButton id="btnRegisto" update="frm" oncomplete="gotoRegistrarAlumno()" icon="ui-icon-disk" value="REGISTRAR ALUMNO"/>
                     </h:panelGrid>  
                 </p:fieldset> 
@@ -89,10 +107,7 @@
                     <h:panelGrid columns="2" cellpadding="10">  
                         <p:graphicImage value="/Resources/images/consulta.jpg" />  
                         <h:outputText  
-                            value="The story begins as Don Vito Corleone, the head of a New York Mafia family, oversees his daughter's wedding.  
-                            His beloved son Michael has just come home from the war, but does not intend to become part of his father's business. T  
-                            hrough Michael's life the nature of the family business becomes clear. The business of the family is just like the head of the family, kind and benevolent to those who give respect,  
-                            but given to ruthless violence whenever anything stands against the good of the family." />  
+                            value="" />  
                     </h:panelGrid>  
                 </p:fieldset>
                 
