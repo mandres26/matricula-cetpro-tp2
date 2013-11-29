@@ -36,7 +36,7 @@ public class ResolucionDirectoralDaoImpl implements ResolucionDirectoralDao {
 
     @Override
     public void insertarRD(Integer idRD, Integer anioInicio, 
-            Integer anioTermino, Date fecRegistro, List<EspecialidadDTO> especialidades) {
+        Integer anioTermino, Date fecRegistro, List<EspecialidadDTO> especialidades) {
         Session session = Util.getCurrentSession();
         session.beginTransaction();
         ResolucionDirectoral rd = new ResolucionDirectoral();

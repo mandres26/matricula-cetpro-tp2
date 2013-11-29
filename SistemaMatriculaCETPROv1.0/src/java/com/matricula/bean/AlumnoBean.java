@@ -9,6 +9,7 @@ package com.matricula.bean;
 import com.matricula.dao.AlumnoDao;
 import com.matricula.dao.impl.AlumnoDaoImpl;
 import com.matricula.model.Alumno;
+import com.matricula.util.HibernateUtil;
 import java.io.Serializable;
 import java.sql.Date;
 import java.util.Calendar;
@@ -58,7 +59,8 @@ public class AlumnoBean implements Serializable {
 
     public String getCodigo() {
         AlumnoDao alumnoDao = new AlumnoDaoImpl();
-        codigo=alumnoDao.calcularMax2().substring(1);
+        //codigo=alumnoDao.calcularMax2().substring(1);
+        codigo = String.valueOf(alumnoDao.calcularMax()).substring(1);
         long valor = Long.parseLong(codigo)+1;
         codigo = "0"+String.valueOf(valor);
         return codigo;
@@ -156,7 +158,6 @@ public class AlumnoBean implements Serializable {
         RequestContext context = RequestContext.getCurrentInstance();
         FacesMessage msg = null;
         boolean registrado = false;
-        
         AlumnoDao alumnoDao = new AlumnoDaoImpl();
         //alumno.setIdAlumno(Integer.parseInt(alumnoDao.calcularMax().toString())+1);
         Date fecha = Date.valueOf(año+"-"+mes+"-"+dia);
@@ -165,8 +166,7 @@ public class AlumnoBean implements Serializable {
         Calendar cal=Calendar.getInstance(); 
         int fa = Integer.valueOf(cal.get(cal.YEAR));
         alumno.setEdad(fa-año);
-        System.out.println("FECHA: "+año+"-"+mes+"-"+dia+"      ->"+alumno.getEdad()+"   :"+alumno.getIdAlumno());
-        
+        System.out.println("FECHA: "+año+"-"+mes+"-"+dia+"      ->"+alumno.getEdad()+"   :"+alumno.getIdAlumno());  
         try {
             alumnoDao.añadirAlumno(alumno);
             msg = new FacesMessage(FacesMessage.SEVERITY_INFO, "Registrado: ", alumno.getNombres());  
