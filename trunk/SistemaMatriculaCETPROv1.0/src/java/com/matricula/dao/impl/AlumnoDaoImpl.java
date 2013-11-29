@@ -28,48 +28,11 @@ public class AlumnoDaoImpl implements AlumnoDao{
     ConexionBD BD = new ConexionBD();
     
     @Override
-    public void añadirAlumno(Alumno alumno) {
-        Connection cn = BD.getConexion();
-        String sexo = alumno.getSexo().toString();
-        String sql = "INSERT INTO ALUMNO VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
-        System.out.println("NOMBRE:   "+alumno.getNombres()+"   "+alumno.getSexo());
-        try {
-            PreparedStatement pst= cn.prepareStatement(sql);
-            pst.setString(1, alumno.getIdAlumno());
-            System.out.println("1");
-            pst.setString(2, alumno.getNombres());
-            System.out.println("2");
-            pst.setString(3, alumno.getApePaterno());
-            System.out.println("3");
-            pst.setString(4, alumno.getApeMaterno());
-            System.out.println("4");
-            pst.setDate(5, (Date) alumno.getFecNacimiento());
-            System.out.println("5");
-            pst.setString(6, sexo);
-            System.out.println("6");
-            pst.setInt(7, alumno.getDni());
-            System.out.println("7");
-            pst.setString(8, alumno.getEmail());
-            System.out.println("8");
-            pst.setInt(9, alumno.getEdad());
-            System.out.println("9");
-            pst.setInt(10, alumno.getNumFijo());
-            System.out.println("10");
-            pst.setInt(11, alumno.getNumMovil());
-            System.out.println("11");
-            pst.setString(12, alumno.getDomicilio());
-            System.out.println("12");
-            pst.setString(13, alumno.getDistrito());
-            System.out.println("13");
-            pst.setString(14, alumno.getProvincia());
-            System.out.println("14");
-            pst.setString(15, alumno.getRegion());
-            System.out.println("15");
-            pst.execute();
-            pst.close();
-        } catch (Exception e) {
-            System.err.println("Error al añadir alumno, en AlumnoDaoImpl: "+e);
-        }      
+    public void añadirAlumno(Alumno alumno){
+        Session session = HibernateUtil.getSessionFactory().openSession();
+        session.beginTransaction();
+        session.save(alumno);
+        session.getTransaction().commit();
     }
 
     @Override
@@ -79,24 +42,7 @@ public class AlumnoDaoImpl implements AlumnoDao{
         Query query = session.createQuery(hql);
         return query.uniqueResult();
     }
-    
-    public String calcularMax2() {
-        Connection cn = BD.getConexion();
-        String valor = null;
-        String sql ="select max(idAlumno) from ALUMNO";
-        try {
-            PreparedStatement pst= cn.prepareStatement(sql);
-            pst.execute();
-            ResultSet resultset = pst.getResultSet();
-            if (resultset.next()) {
-                valor = resultset.getString(1);
-            }
-            pst.close();
-        } catch (Exception e) {
-            System.err.println("Error al calcularMax2, en AlumnoDaoImpl: "+e);
-        }
-        return valor;
-    }
+
     public  List<Alumno> cargarAlumnos(){
      Session session = HibernateUtil.getSessionFactory().openSession();
         Transaction t = session.beginTransaction();
