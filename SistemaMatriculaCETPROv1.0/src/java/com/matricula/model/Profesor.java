@@ -28,6 +28,7 @@ public class Profesor  implements java.io.Serializable {
      private Set<Grupo> grupos = new HashSet<Grupo>(0);
 
     public Profesor() {
+        
     }
 
 	

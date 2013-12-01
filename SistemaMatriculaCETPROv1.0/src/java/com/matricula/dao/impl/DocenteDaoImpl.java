@@ -34,47 +34,13 @@ public class DocenteDaoImpl  implements DocenteDao{
         this.docenteDao = docenteDao;
     }
     */
-     public void añadir(Profesor profesor) {
-        Connection cn = BD.getConexion();
-        String sexo = profesor.getSexo().toString();
-        String sql = "INSERT INTO PROFESOR(?,?,?,?,?,?,?,?,?,?,?,?,?)";
-        System.out.println("NOMBRE:   "+profesor.getNombres()+"   "+profesor.getSexo());
-        try {
-            PreparedStatement pst= cn.prepareStatement(sql);
-            
-            pst.setInt(1, profesor.getIdProfesor());
-            System.out.println("1");
-            pst.setString(2, profesor.getNombres());
-            System.out.println("2");
-            pst.setString(3, profesor.getApePaterno());
-            System.out.println("3");
-            pst.setString(4, profesor.getApeMaterno());
-            System.out.println("4");
-            pst.setDate(5, (java.sql.Date) profesor.getFecNacimiento());
-            System.out.println("5");
-            pst.setString(6, sexo);
-            System.out.println("6");
-            pst.setInt(7, profesor.getDni());
-            System.out.println("7");
-            pst.setString(8, profesor.getEmail());
-            System.out.println("8");
-            pst.setInt(9,profesor.getEdad());
-            System.out.println("9");
-            pst.setString(10, profesor.getNumFijo());
-            System.out.println("10");
-            pst.setString(11, profesor.getNumMovil());
-            System.out.println("11");
-            pst.setString(12, profesor.getDomicilio());
-            System.out.println("12");
-            pst.setString(13, profesor.getGradEstudios());
-            System.out.println("13");
-            
-            pst.execute();
-            pst.close();
-        } catch (Exception e) {
-            System.err.println("Error al añadir profesor, en docente: "+e);
-        }      
+     public void añadirProfesor(Profesor profesor) {
+        Session session = HibernateUtil.getSessionFactory().openSession();
+        session.beginTransaction();
+        session.save(profesor);
+        session.getTransaction().commit();
     }
+     
     public void insert(Profesor profesor) {
         Session session = Util.getCurrentSession();
         session.beginTransaction();
