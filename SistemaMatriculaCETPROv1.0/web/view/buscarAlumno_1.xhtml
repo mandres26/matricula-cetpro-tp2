@@ -116,6 +116,7 @@ and open the template in the editor.
                update=":form" /> 
         <p:commandButton id="botonConsulta" value="Consultar Alumno" icon="ui-icon-search"  
         update=":form:display"  oncomplete="carDialog.show()"/>     
+        <p:commandButton id="botonAceptar" value="Modificar" oncomplete="gotoModificarAlumno()"/> 
           
         </f:facet> 
 
@@ -173,7 +174,11 @@ and open the template in the editor.
                 </h:form>
                 
               
-                
+                <script type="text/javascript">  
+                    function gotoModificarAlumno() {  
+                        window.location="/SistemaMatriculaCETPROv1.0/view/modificarAlumno.jsf";
+                    }  
+                </script>
                 
                                             
                       
