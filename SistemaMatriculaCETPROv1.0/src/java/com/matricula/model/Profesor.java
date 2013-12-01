@@ -20,7 +20,7 @@ public class Profesor  implements java.io.Serializable {
      private Character sexo;
      private Integer dni;
      private String email;
-     private String edad;
+     private int edad;
      private String numFijo;
      private String numMovil;
      private String domicilio;
@@ -34,7 +34,7 @@ public class Profesor  implements java.io.Serializable {
     public Profesor(int idProfesor) {
         this.idProfesor = idProfesor;
     }
-    public Profesor(int idProfesor, String nombres, String apePaterno, String apeMaterno, Date fecNacimiento, Character sexo, Integer dni, String email, String edad, String numFijo, String numMovil, String domicilio, String gradEstudios, Set<Grupo> grupos) {
+    public Profesor(int idProfesor, String nombres, String apePaterno, String apeMaterno, Date fecNacimiento, Character sexo, Integer dni, String email, int edad, String numFijo, String numMovil, String domicilio, String gradEstudios, Set<Grupo> grupos) {
        this.idProfesor = idProfesor;
        this.nombres = nombres;
        this.apePaterno = apePaterno;
@@ -107,11 +107,11 @@ public class Profesor  implements java.io.Serializable {
     public void setEmail(String email) {
         this.email = email;
     }
-    public String getEdad() {
+    public int getEdad() {
         return this.edad;
     }
     
-    public void setEdad(String edad) {
+    public void setEdad(int edad) {
         this.edad = edad;
     }
     public String getNumFijo() {
