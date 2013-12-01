@@ -12,7 +12,7 @@ import java.util.List;
  * @author Rosy
  */
 public interface DocenteDao {
-    public void añadir(Profesor profesor);
+    public void añadirProfesor(Profesor profesor);
     void insert(Profesor obj);
     void delete(Profesor obj);
     void update(Profesor obj);

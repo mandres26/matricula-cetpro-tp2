@@ -172,24 +172,26 @@ and open the template in the editor.
                        
                     </p:inputText>
                     <h:outputText />
+                    
+                   
                 </h:panelGrid>  
             </p:panel>  
             
-            
+             
         
         </h:panelGrid>
                 
-            <br/>
-            <p:commandButton value="REGISTRAR"  actionListener="#{docenteBean.insert}" oncomplete="handleLoginRequest(xhr, status, args)" style="width: 200px; font-size: 25px;" update=":growl"/>    
-        
-       
+          
+            <p:commandButton value="Registrar"  actionListener="#{docenteBean.añadirProfesor}" oncomplete="handleLoginRequest(xhr, status, args)" style="width: 200px; font-size: 25px;" update=":growl"/>    
+          
+           
         <script type="text/javascript">  
             function abrir() {  
                 window.location="/SistemaMatriculaCETPROv1.0/view/index.jsf";
             }  
             
             function handleLoginRequest(xhr, status, args) {  
-                if(args.validationFailed || !args.regAlu) {  
+                if(args.validationFailed || !args.regProfe) {  
                      
                 } else {  
                     window.location="/SistemaMatriculaCETPROv1.0/view/index.jsf";

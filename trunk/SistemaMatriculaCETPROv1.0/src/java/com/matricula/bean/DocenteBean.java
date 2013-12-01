@@ -15,6 +15,8 @@ import javax.faces.event.ActionEvent;
 import org.primefaces.context.RequestContext;
 import com.matricula.dao.DocenteDao;
 import com.matricula.dao.impl.DocenteDaoImpl;
+import com.matricula.model.Alumno;
+import java.sql.Date;
 /**
  *
  * @author Rosy
@@ -27,9 +29,13 @@ public class DocenteBean implements Serializable{
     private int meses[] = {1,2,3,4,5,6,7,8,9,10,11,12};
     private int años[] = {1991,1992,1993};
   
-    private int codigo;
+    private int codigo =123445;
     private Profesor profesor;
 
+    
+    public DocenteBean(){
+    
+    }
     public int getDia() {
         return dia;
     }
@@ -79,7 +85,7 @@ public class DocenteBean implements Serializable{
     }
 
     public int getCodigo() {
-        DocenteDao docenteDao = new DocenteDaoImpl();
+       
         
         return codigo;
     }
@@ -89,6 +95,8 @@ public class DocenteBean implements Serializable{
     }
 
     public Profesor getProfesor() {
+        if (profesor==null) {
+            profesor=new Profesor();}
         return profesor;
     }
 
@@ -99,14 +107,14 @@ public class DocenteBean implements Serializable{
 
     
    
-     public void insert(ActionEvent actionEvent){
+     public void añadirProfesor(ActionEvent actionEvent){
         RequestContext context = RequestContext.getCurrentInstance();
         FacesMessage msg = null;
         boolean registrado = false;
         
         DocenteDao docenteDao = new DocenteDaoImpl();
         //alumno.setIdAlumno(Integer.parseInt(alumnoDao.calcularMax().toString())+1);
-        java.sql.Date fecha = java.sql.Date.valueOf(año+"-"+mes+"-"+dia);
+        Date fecha = Date.valueOf(año+"-"+mes+"-"+dia);
         profesor.setIdProfesor(getCodigo());
         profesor.setFecNacimiento(fecha);
         Calendar cal=Calendar.getInstance(); 
@@ -116,14 +124,14 @@ public class DocenteBean implements Serializable{
         System.out.println("FECHA: "+año+"-"+mes+"-"+dia+"      ->"+profesor.getEdad()+"   :"+profesor.getIdProfesor());
         docenteDao.insert(profesor);
         try {
-            docenteDao.añadir(profesor);
+            docenteDao.añadirProfesor(profesor);
             msg = new FacesMessage(FacesMessage.SEVERITY_INFO, "Registrado: ", profesor.getNombres());  
             registrado = true;
         } catch (Exception e) {
-            System.out.println("Error al añadir alumno, en AlumnoBean: "+e);
+            System.out.println("Error al añadir alumno, en DocenteBean: "+e);
         } 
         FacesContext.getCurrentInstance().addMessage(null, msg);  
-        context.addCallbackParam("regAlu", registrado);  
+        context.addCallbackParam("regProfe", registrado);  
         profesor=new Profesor();
     }
      
