@@ -19,6 +19,7 @@ public interface AlumnoDao {
 
     
     public void añadirAlumno(Alumno alumno);
+    public void actualizarAlumno(Alumno alumno);
     public Object calcularMax();
     /*de buscar Alumno*/
     public  List<Alumno> cargarAlumnos();

@@ -50,4 +50,12 @@ public class AlumnoDaoImpl implements AlumnoDao{
         t.commit();
         return lista;
     }
+
+    @Override
+    public void actualizarAlumno(Alumno alumno) {
+        Session session = HibernateUtil.getSessionFactory().openSession();
+        session.getTransaction().begin();
+        session.update(alumno);
+        session.getTransaction().commit();
+    }
 }

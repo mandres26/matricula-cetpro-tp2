@@ -179,6 +179,22 @@ public class AlumnoBean implements Serializable {
         alumno=new Alumno();
     }
     
+    public void actualizarAlumno(ActionEvent actionEvent){
+        RequestContext context = RequestContext.getCurrentInstance();
+        FacesMessage msg = null;
+        boolean modificado = false;
+        AlumnoDao alumnoDao = new AlumnoDaoImpl();
+        try {
+            alumnoDao.actualizarAlumno(alumno);
+            msg = new FacesMessage(FacesMessage.SEVERITY_INFO, "Registrado: ", alumno.getNombres());  
+            modificado = true;
+        } catch (Exception e) {
+            System.out.println("Error al añadir alumno, en AlumnoBean: "+e);
+        } 
+        FacesContext.getCurrentInstance().addMessage(null, msg);  
+        context.addCallbackParam("regAlu", modificado);  
+    }
+    
     /*de buscar alumno*/
 
     public List<Alumno> getAlumnos() {
