@@ -20,9 +20,9 @@ public class Profesor  implements java.io.Serializable {
      private Character sexo;
      private Integer dni;
      private String email;
-     private int edad;
-     private String numFijo;
-     private String numMovil;
+     private Integer edad;
+     private Integer numFijo;
+     private Integer numMovil;
      private String domicilio;
      private String gradEstudios;
      private Set<Grupo> grupos = new HashSet<Grupo>(0);
@@ -35,7 +35,7 @@ public class Profesor  implements java.io.Serializable {
     public Profesor(int idProfesor) {
         this.idProfesor = idProfesor;
     }
-    public Profesor(int idProfesor, String nombres, String apePaterno, String apeMaterno, Date fecNacimiento, Character sexo, Integer dni, String email, int edad, String numFijo, String numMovil, String domicilio, String gradEstudios, Set<Grupo> grupos) {
+    public Profesor(int idProfesor, String nombres, String apePaterno, String apeMaterno, Date fecNacimiento, Character sexo, Integer dni, String email, Integer edad, Integer numFijo, Integer numMovil, String domicilio, String gradEstudios, Set<Grupo> grupos) {
        this.idProfesor = idProfesor;
        this.nombres = nombres;
        this.apePaterno = apePaterno;
@@ -108,25 +108,25 @@ public class Profesor  implements java.io.Serializable {
     public void setEmail(String email) {
         this.email = email;
     }
-    public int getEdad() {
+    public Integer getEdad() {
         return this.edad;
     }
     
-    public void setEdad(int edad) {
+    public void setEdad(Integer edad) {
         this.edad = edad;
     }
-    public String getNumFijo() {
+    public Integer getNumFijo() {
         return this.numFijo;
     }
     
-    public void setNumFijo(String numFijo) {
+    public void setNumFijo(Integer numFijo) {
         this.numFijo = numFijo;
     }
-    public String getNumMovil() {
+    public Integer getNumMovil() {
         return this.numMovil;
     }
     
-    public void setNumMovil(String numMovil) {
+    public void setNumMovil(Integer numMovil) {
         this.numMovil = numMovil;
     }
     public String getDomicilio() {

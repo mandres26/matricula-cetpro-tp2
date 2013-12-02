@@ -85,8 +85,8 @@ public class DocenteBean implements Serializable{
     }
 
     public int getCodigo() {
-       
-        
+        DocenteDao docenteDao = new DocenteDaoImpl();
+        codigo = Integer.parseInt(docenteDao.calcularMax().toString())+1;
         return codigo;
     }
 
@@ -107,31 +107,28 @@ public class DocenteBean implements Serializable{
 
     
    
-     public void añadirProfesor(ActionEvent actionEvent){
+     public void añadirProfesor(){
         RequestContext context = RequestContext.getCurrentInstance();
         FacesMessage msg = null;
         boolean registrado = false;
         
         DocenteDao docenteDao = new DocenteDaoImpl();
-        //alumno.setIdAlumno(Integer.parseInt(alumnoDao.calcularMax().toString())+1);
         Date fecha = Date.valueOf(año+"-"+mes+"-"+dia);
         profesor.setIdProfesor(getCodigo());
         profesor.setFecNacimiento(fecha);
         Calendar cal=Calendar.getInstance(); 
         int fa = Integer.valueOf(cal.get(cal.YEAR));
         profesor.setEdad(fa-año);
-       // profesor.setEdad(fa-año);
         System.out.println("FECHA: "+año+"-"+mes+"-"+dia+"      ->"+profesor.getEdad()+"   :"+profesor.getIdProfesor());
-        docenteDao.insert(profesor);
         try {
-            docenteDao.añadirProfesor(profesor);
+            docenteDao.añadirProfesor(profesor); 
             msg = new FacesMessage(FacesMessage.SEVERITY_INFO, "Registrado: ", profesor.getNombres());  
             registrado = true;
         } catch (Exception e) {
             System.out.println("Error al añadir alumno, en DocenteBean: "+e);
-        } 
+        }  
         FacesContext.getCurrentInstance().addMessage(null, msg);  
-        context.addCallbackParam("regProfe", registrado);  
+        context.addCallbackParam("regAlu", registrado);  
         profesor=new Profesor();
     }
      

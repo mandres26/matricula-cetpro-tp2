@@ -23,7 +23,6 @@ import org.hibernate.Session;
  * @author Rosy
  */
 public class DocenteDaoImpl  implements DocenteDao{
-     ConexionBD BD = new ConexionBD();
     /*private  DocenteDao docenteDao;
  ConexionBD BD = new ConexionBD();
     public DocenteDao getDocenteDao() {
@@ -146,27 +145,9 @@ public class DocenteDaoImpl  implements DocenteDao{
 
      public Object calcularMax() {
         Session session = HibernateUtil.getSessionFactory().openSession();
-        String hql ="select max(idProfesor) from PROFESOR";
+        String hql ="select max(idProfesor) from Profesor";
         Query query = session.createQuery(hql);
         return query.uniqueResult();
-    }
-    
-    public String calcularMax2() {
-        Connection cn = BD.getConexion();
-        String valor = null;
-        String sql ="select max(idProfesor) from PROFESOR";
-        try {
-            PreparedStatement pst= cn.prepareStatement(sql);
-            pst.execute();
-            ResultSet resultset = pst.getResultSet();
-            if (resultset.next()) {
-                valor = resultset.getString(1);
-            }
-            pst.close();
-        } catch (Exception e) {
-            System.err.println("Error al calcularMax2, en DocenteDaoImpl: "+e);
-        }
-        return valor;
     }
     
 }

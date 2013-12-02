@@ -33,37 +33,27 @@
                             <p:menuitem value="Imprimir" url="#" icon="ui-icon-print" />  
                         </p:submenu>   
 
-                       <p:submenu label="Acciones" icon="ui-icon-gear">  
-                            <p:submenu label="Registros">
-                                <p:menuitem value="Registrar Alumno" url="/view/registrarAlumno.jsf"/>
-                                <p:menuitem value="Registrar Docente" url="/view/index.jsf"/>
-                                <p:menuitem value="Registrar Resolucion Directoral" url="/view/index.jsf"/>
-                                <p:menuitem value="Registrar Programacion Curricular" url="/view/index.jsf"/>
-                                <p:menuitem value="Registrar Matricula" url="/view/index.jsf"/>
-                            </p:submenu>
+                       <p:submenu label="Registros" icon="ui-icon-gear">  
+                            <p:menuitem value="Registrar Alumno" url="/view/registrarAlumno.jsf"/>
+                            <p:menuitem value="Registrar Docente" url="/view/registrarDocente.jsf"/>
+                            <p:menuitem value="Registrar Resolucion Directoral" url="/view/registrarRD.jsf"/>
+                            <p:menuitem value="Registrar Programacion Curricular" url="/view/index.jsf"/>
+                            <p:menuitem value="Registrar Matricula" url="/view/index.jsf"/>
                        </p:submenu>
  
-                            <p:submenu label="Mantenimientos">
-                                <p:menuitem value="Modificar Alumno" url="/view/buscarAlumno_1.jsf"/>
-                                <p:menuitem value="Mantener Docente" url="/view/index.jsf"/>
-                                <p:menuitem value="Mantener Especialidades" url="/view/mantenerRD.jsf"/>
-                                <p:menuitem value="Mantener Programacion Curricular" url="/view/index.jsf"/>
-                           
-                        
-                            <p:submenu label="Consultas">
-                                <p:menuitem value="Consutar Alumno" url="/view/buscarAlumno.jsf"/>
-                                <p:menuitem value="Consultar Modulos" url="/view/index.jsf"/>
-                                <p:menuitem value="Consultar Programacion Curricular" url="/view/index.jsf"/>
-                            </p:submenu>
-                            
-                            <p:menuitem value="Registrar Docente" actionListener="#{menuBean.delete}" icon="ui-icon-disk" update="messages" ajax="false"/>
-                            
-                            
-            
-                            <p:menuitem value="Realizar Matricula" actionListener="#{menuBean.delete}" icon="ui-icon-disk" update="messages" ajax="false"/>  
+                        <p:submenu label="Mantenimientos">
+                            <p:menuitem value="Modificar Alumno" url="/view/buscarAlumno_1.jsf"/>
+                            <p:menuitem value="Mantener Docente" url="/view/index.jsf"/>
+                            <p:menuitem value="Mantener Especialidades" url="/view/mantenerRD.jsf"/>
+                            <p:menuitem value="Mantener Programacion Curricular" url="/view/index.jsf"/>
+                            <p:menuitem value="Mantener Resolucion Directoral" url="/view/mantenerRD.jsf"/>
                         </p:submenu>  
                         
-                        
+                        <p:submenu label="Consultas">
+                                <p:menuitem value="Consutar Alumno" url="/view/buscarAlumno.jsf"/>
+                                <p:menuitem value="Consultar Modulos" url="/view/index.jsf"/>
+                                <p:menuitem value="Consultar Programacion Curricular" url="/view/consultarProgramacionC.jsf"/>
+                        </p:submenu>
                         
                         
                         <p:submenu label="Ayuda" icon="ui-icon-help">  
@@ -77,9 +67,6 @@
                                 </p:submenu>  
                                 <p:menuitem value="File" url="#" />  
                             </p:submenu>  
-                            <p:menuitem value="Manual del Sistema" ajax="false" onclick="PrimeFaces.monitorDownload(start, stop)">
-                                <p:fileDownload value="#" />
-                            </p:menuitem>
                         </p:submenu> 
 
                         <f:facet name="options">  
@@ -112,9 +99,7 @@
                 </p:fieldset>
                 
                 <p:commandButton id="btnRegistrarRD" update="frm" oncomplete="abrir2()" icon="ui-icon-load"/>
-                
-                
-                 <p:commandButton id="btnRegistrarD" update="frm" oncomplete="abrir3()" icon="ui-icon-load" value="REGISTRAR docente"/>
+
             </div>
         </h:form>
         
@@ -138,7 +123,7 @@
         </script>
         <script type="text/javascript">  
             function abrir3() {  
-                window.location="/SistemaMatriculaCETPROv1.0/view/RegistrarDocente.jsf";
+                window.location="/SistemaMatriculaCETPROv1.0/view/registrarDocente.jsf";
             }  
         </script>
         
