@@ -4,6 +4,7 @@
  */
 package com.matricula.dao;
 
+import com.matricula.model.Alumno;
 import com.matricula.model.Profesor;
 import java.util.List;
 
@@ -13,11 +14,10 @@ import java.util.List;
  */
 public interface DocenteDao {
     public void añadirProfesor(Profesor profesor);
-    void insert(Profesor obj);
-    void delete(Profesor obj);
-    void update(Profesor obj);
+    public void delete(Profesor profesor);
+    public void update(Profesor profesor);
     public Object calcularMax();
-    List<Profesor> getAll();
-    List<Profesor> getAllByFechas(Profesor obj);
-    
+    public List<Profesor> getAll();
+   
+       
 }
