@@ -51,11 +51,12 @@
                         
                         <p:submenu label="Consultas">
                                 <p:menuitem value="Consutar Alumno" url="/view/buscarAlumno.jsf"/>
-                                <p:menuitem value="Consultar Modulos" url="/view/index.jsf"/>
+                                <p:menuitem value="Consultar Modulos" url="/view/index.jsf"/>                                
                                 <p:menuitem value="Consultar Programacion Curricular" url="/view/consultarProgramacionC.jsf"/>
-                        </p:submenu>
-                        
-                        
+                                <p:menuitem value="Consultar Programacion Curricular" url="/view/consultarRD.jsf"/>
+                            </p:submenu>
+                            
+                       
                         <p:submenu label="Ayuda" icon="ui-icon-help">  
                             <p:submenu label="Contenidos" icon="ui-icon-search">  
                                 <p:menuitem value="Manual de usuario" url="#" />  
@@ -96,9 +97,7 @@
                         <h:outputText  
                             value="" />  
                     </h:panelGrid>  
-                </p:fieldset>
-                
-                <p:commandButton id="btnRegistrarRD" update="frm" oncomplete="abrir2()" icon="ui-icon-load"/>
+                </p:fieldset>             
 
             </div>
         </h:form>
@@ -115,11 +114,14 @@
             function gotoRegistrarAlumno() {  
                 window.location="/SistemaMatriculaCETPROv1.0/view/registrarAlumno.jsf";
             } 
-        </script>
-        <script type="text/javascript">  
-            function abrir2() {  
+            
+            function gotoRegistrarRD() {  
                 window.location="/SistemaMatriculaCETPROv1.0/view/registrarRD.jsf";
-            }  
+            }                       
+            
+            function gotoConsultarRD() {  
+                window.location="/SistemaMatriculaCETPROv1.0/view/consultarRD.jsf";
+            }
         </script>
         <script type="text/javascript">  
             function abrir3() {  
