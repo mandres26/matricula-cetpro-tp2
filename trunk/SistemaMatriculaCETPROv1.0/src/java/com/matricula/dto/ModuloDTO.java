@@ -4,11 +4,13 @@
  */
 package com.matricula.dto;
 
+import java.io.Serializable;
+
 /**
  *
  * @author Juan Diego
  */
-public class ModuloDTO {
+public class ModuloDTO implements Serializable {
     private int idModulo;
     private String nombreModulo;
     private int horasModulo;

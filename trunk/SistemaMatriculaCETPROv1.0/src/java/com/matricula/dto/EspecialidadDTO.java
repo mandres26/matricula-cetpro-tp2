@@ -4,13 +4,14 @@
  */
 package com.matricula.dto;
 
+import java.io.Serializable;
 import java.util.List;
 
 /**
  *
  * @author Juan Diego
  */
-public class EspecialidadDTO {
+public class EspecialidadDTO implements Serializable {
     private Integer idEspecialidad;
     private String nombreEspecialidad;
     private String cicloEspecialidad;

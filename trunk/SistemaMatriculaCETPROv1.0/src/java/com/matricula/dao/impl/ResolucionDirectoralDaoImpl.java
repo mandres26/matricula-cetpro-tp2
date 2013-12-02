@@ -49,7 +49,7 @@ public class ResolucionDirectoralDaoImpl implements ResolucionDirectoralDao {
         session.getTransaction().commit();
         EspecialidadDao esp = new EspecialidadDaoImpl();
             for(EspecialidadDTO e: especialidades){
-                esp.insertarEspecialidad(esp.ultimaId()+1, e, rd);                
+                esp.insertarEspecialidad(esp.ultimaId()+1, e, rd);
             }
     } 
 

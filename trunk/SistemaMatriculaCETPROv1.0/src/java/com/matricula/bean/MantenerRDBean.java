@@ -74,7 +74,7 @@ public class MantenerRDBean implements Serializable  {
             for(EspecialidadDTO i: especialidades){
                 if(i.getModulos() == null){
                     Util.mostrarMensajeERROR("Datos Incompletos", 
-                            "Hay una specialidad sin módulos");
+                            "Hay una especialidad sin módulos");
                 }else{
                     grabarRD();
                 }
@@ -206,7 +206,7 @@ public class MantenerRDBean implements Serializable  {
     
     public void borrarModulo(){
         System.out.println("borrando "+modSeleccionado.getNombreModulo());
-        
+        espSeleccionada.getModulos().remove(modSeleccionado);
     }
 
     public List<SelectItem> getListaAnios() {        
