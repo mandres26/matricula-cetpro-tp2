@@ -1,0 +1,134 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+To change this template, choose Tools | Templates
+and open the template in the editor.
+-->
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://java.sun.com/jsf/core">
+    <head>
+        <title>REGISTRAR DOCENTE</title>
+    </head>
+    <body>
+        <h:panelGrid columns="3">  
+
+                    <p:panel id="panel1" header="Datos Personales" style="margin-bottom:10px; height: 350px">  
+                        <h:panelGrid columns="2">  
+                            <h:outputLabel for="codigo" value="Codigo: "  style="width: 1800px"/>  
+                            <p:inputText id="codigo" value="#{docenteBean.codigo}" required="true" label="codigo" readonly="true" style="width: 250px"/>
+                            <h:outputText/>
+                            <br/>
+
+                            <h:outputLabel for="nombres" value="Nombres: " />  
+                            <p:inputText id="nombres" value="#{docenteBean.profesor.nombres}" required="true" label="nombres" style="width: 250px">  
+                                <f:validateLength minimum="2" />  
+                            </p:inputText> 
+
+                            <h:outputLabel for="apPaterno" value="Ap. Paterno: " />  
+                            <p:inputText id="apPaterno" value="#{docenteBean.profesor.apePaterno}" required="true" label="apPaterno" style="width: 250px"/>   
+
+
+                            <h:outputLabel for="apMaterno" value="Ap. Materno: " />  
+                            <p:inputText id="apMaterno" value="#{docenteBean.profesor.apeMaterno}" required="true" label="apMaterno" style="width: 250px"/>  
+                            <h:outputText/>
+                            <br/>
+
+                            <h:outputLabel for="dni" value="DNI: " />  
+                            <p:inputText id="dni" value="#{docenteBean.profesor.dni}" required="true" label="dni" style="width: 250px"> 
+                                <f:validateLength minimum="8" maximum="8"/>
+                            </p:inputText>
+                            <h:outputText/>
+                            <br/>
+
+                            <h:outputLabel for="sexo" value="Sexo: " />  
+                            <p:selectOneRadio id="sexo" value="#{docenteBean.profesor.sexo}" style="width: 250px">  
+                                <f:selectItem itemLabel="Masculino" itemValue="M" />  
+                                <f:selectItem itemLabel="Femenino" itemValue="F" />   
+                            </p:selectOneRadio>  
+                            <h:outputText/>
+                            <br/>
+
+                            <h:outputLabel value="Fecha Nacimiento: " />             
+                            <h:panelGrid columns="3">
+                                <h:selectOneMenu id="dias" value="#{docenteBean.dia}" required="true">  
+                                    <f:selectItem itemLabel="dd" itemValue="" />  
+                                    <f:selectItems value="#{docenteBean.dias}" />  
+                                </h:selectOneMenu>  
+                                <h:selectOneMenu id="meses" value="#{docenteBean.mes}" required="true">  
+                                    <f:selectItem itemLabel="mm" itemValue="" />  
+                                    <f:selectItems value="#{docenteBean.meses}" />  
+                                </h:selectOneMenu> 
+                                <h:selectOneMenu id="años" value="#{docenteBean.año}" required="true">  
+                                    <f:selectItem itemLabel="yyyy" itemValue="" />  
+                                    <f:selectItems value="#{docenteBean.años}" />  
+                                </h:selectOneMenu> 
+                                <h:outputText />  
+                            </h:panelGrid>
+
+                        </h:panelGrid>  
+                    </p:panel>  
+
+                    <p:panel id="panel2" header="Otros Datos" style="margin-bottom:10px; height: 350px">  
+                        <h:panelGrid columns="1">  
+                            <h:outputLabel for="gradoE" value="Grado de estudios: " />  
+                            <p:inputText id="gradoE" value="#{docenteBean.profesor.gradEstudios}" required="true" label="direccion" style="width: 280px"/>
+                            <h:outputText />
+                            <br/><br/>
+                            <h:outputLabel for="direccion" value="Direccion: " />  
+                            <p:inputText id="direccion" value="#{docenteBean.profesor.domicilio}" required="true" label="direccion" style="width: 280px"/>
+                            <h:outputText />
+                        </h:panelGrid>  
+                    </p:panel>
+
+
+
+                    <p:panel id="panel3" header="Contacto" style="margin-bottom:10px; height: 350px">  
+                        <h:panelGrid columns="2">  
+                            <h:outputLabel for="correo" value="Correo: "/>  
+                            <p:inputText id="correo" value="#{docenteBean.profesor.email}" required="true" label="correo" style="width: 200px"/>
+                            <h:outputText/>
+                            <br/><br/>
+
+                            <h:outputLabel for="numFijo" value="Telefono: " />  
+                            <p:inputText id="telefono" value="#{docenteBean.profesor.numFijo}" required="true" label="telefono" style="width: 150px">
+
+                            </p:inputText>
+                            <h:outputText />
+                            <br/><br/>
+
+                            <h:outputLabel for="numCelular" value="Celular: " />  
+                            <p:inputText id="celular" value="#{docenteBean.profesor.numMovil}" required="true" label="celular" style="width: 150px">
+
+                            </p:inputText>
+                            <h:outputText />
+
+
+                        </h:panelGrid>  
+                    </p:panel>  
+
+
+
+                </h:panelGrid>
+        
+                <br/>
+                <p:commandButton value="Registrar"  actionListener="#{docenteBean.añadirProfesor}" oncomplete="handleLoginRequest(xhr, status, args)" style="width: 200px; font-size: 25px;" update=":growl"/>      
+
+           
+                <script type="text/javascript">  
+                    function abrir() {  
+                        window.location="/SistemaMatriculaCETPROv1.0/view/index.jsf";
+                    }  
+            
+                    function handleLoginRequest(xhr,status, args) {  
+                        if(args.validationFailed || !args.regProfe) {  
+                     
+                        } 
+                        else {  
+                            window.location="/SistemaMatriculaCETPROv1.0/view/index.jsf";
+                        }  
+                    }
+                </script>
+    </body>
+</html>
