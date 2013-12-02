@@ -17,7 +17,6 @@ public interface DocenteDao {
     void delete(Profesor obj);
     void update(Profesor obj);
     public Object calcularMax();
-    public String calcularMax2();
     List<Profesor> getAll();
     List<Profesor> getAllByFechas(Profesor obj);
     

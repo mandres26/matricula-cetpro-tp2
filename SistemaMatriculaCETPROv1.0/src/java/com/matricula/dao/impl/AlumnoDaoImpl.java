@@ -25,7 +25,6 @@ import org.hibernate.Transaction;
  * @author FELIPE
  */
 public class AlumnoDaoImpl implements AlumnoDao{
-    ConexionBD BD = new ConexionBD();
     
     @Override
     public void añadirAlumno(Alumno alumno){
