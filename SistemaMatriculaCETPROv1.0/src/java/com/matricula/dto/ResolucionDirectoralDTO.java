@@ -4,17 +4,20 @@
  */
 package com.matricula.dto;
 
+import java.io.Serializable;
 import java.util.Date;
+import java.util.List;
 
 /**
  *
  * @author Juan Diego
  */
-public class ResolucionDirectoralDTO {
+public class ResolucionDirectoralDTO implements Serializable {
     private Integer idRd;
     private Date anioInicio;
     private Date anioTermino;
     private Date fechaRegistro;
+    private List<EspecialidadDTO> especialidades;
 
     public Date getAnioInicio() {
         return anioInicio;
@@ -46,6 +49,14 @@ public class ResolucionDirectoralDTO {
 
     public void setIdRd(Integer idRd) {
         this.idRd = idRd;
+    }
+
+    public List<EspecialidadDTO> getEspecialidades() {
+        return especialidades;
+    }
+
+    public void setEspecialidades(List<EspecialidadDTO> especialidades) {
+        this.especialidades = especialidades;
     }
     
     

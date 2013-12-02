@@ -6,6 +6,8 @@ package com.matricula.dao;
 
 import com.matricula.dto.ModuloDTO;
 import com.matricula.model.Especialidad;
+import com.matricula.model.Modulo;
+import java.util.List;
 
 /**
  *
@@ -15,4 +17,5 @@ public interface ModuloDao {
     
     public void insertarModulo(Integer idMod, ModuloDTO mod, Especialidad esp);
     public int ultimaId();
+    public List<Modulo> listarModulos(Integer idEspecialidad);
 }

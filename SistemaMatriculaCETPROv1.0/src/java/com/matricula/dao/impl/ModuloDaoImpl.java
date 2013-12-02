@@ -11,6 +11,7 @@ import com.matricula.model.Modulo;
 import com.matricula.util.Constante;
 import com.matricula.util.Util;
 import java.util.List;
+import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 
@@ -48,5 +49,18 @@ public class ModuloDaoImpl implements ModuloDao{
             ultimo = (Integer)lista.get(0);
         } 
         return ultimo;
+    }
+
+    @Override
+    public List<Modulo> listarModulos(Integer idEspecialidad) {
+        Session session = Util.getCurrentSession();
+        Transaction t = session.beginTransaction();
+        String sql = "from Modulo "
+                + " where ESPECIALIDAD_RESOLUCION_codEspecialidad_Resolucion=:id ";
+        Query query = session.createQuery(sql);
+        query.setParameter("id", idEspecialidad);
+        List lista =query.list();        
+        t.commit();
+        return lista;
     }
 }
