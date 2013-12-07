@@ -71,13 +71,16 @@ public class RegistrarRDBean implements Serializable  {
         if(idResolucion == 0 || anioInicio == -1 || anioFin == -1){
             Util.mostrarMensajeINFO("Faltan datos en RD", "Completar");
         }else{
+            boolean flag = true;
             for(EspecialidadDTO i: especialidades){
-                if(i.getModulos() == null){
+                if(i.getModulos() == null && flag){
                     Util.mostrarMensajeERROR("Datos Incompletos", 
                             "Hay una especialidad sin módulos");
-                }else{
-                    grabarRD();
+                    flag = false;
                 }
+            }
+            if(flag){
+                grabarRD();
             }
         }
         
@@ -325,7 +328,7 @@ public class RegistrarRDBean implements Serializable  {
         Object newValue = event.getNewValue();  
           
         if(newValue != null && !newValue.equals(oldValue)) {  
-            Util.mostrarMensajeINFO("Celda Editada", "Antiguo: " + oldValue + ", Nuevo:" + newValue);
+            Util.mostrarMensajeINFO("Campo Editado", "Antiguo: " + oldValue + ", Nuevo:" + newValue);
         }  
     }
     
