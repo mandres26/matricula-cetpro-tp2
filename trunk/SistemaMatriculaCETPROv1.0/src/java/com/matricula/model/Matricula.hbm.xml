@@ -1,12 +1,12 @@
 <?xml version="1.0"?>
 <!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
-"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
-<!-- Generated 17-nov-2013 16:20:47 by Hibernate Tools 3.6.0 -->
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 9/12/2013 01:55:35 AM by Hibernate Tools 3.2.1.GA -->
 <hibernate-mapping>
-    <class name="com.matricula.model.Matricula" table="MATRICULA" catalog="matriculatp2">
+    <class name="com.matricula.model.Matricula" table="MATRICULA" catalog="matriculacetpro">
         <composite-id name="id" class="com.matricula.model.MatriculaId">
             <key-property name="alumnoIdAlumno" type="string">
-                <column name="ALUMNO_idAlumno" />
+                <column name="ALUMNO_idAlumno" length="15" />
             </key-property>
             <key-property name="grupoIdGrupo" type="int">
                 <column name="GRUPO_idGrupo" />
@@ -16,7 +16,7 @@
             <column name="GRUPO_idGrupo" not-null="true" />
         </many-to-one>
         <many-to-one name="alumno" class="com.matricula.model.Alumno" update="false" insert="false" fetch="select">
-            <column name="ALUMNO_idAlumno" not-null="true" />
+            <column name="ALUMNO_idAlumno" length="15" not-null="true" />
         </many-to-one>
         <property name="fecMatricula" type="date">
             <column name="fecMatricula" length="10" />

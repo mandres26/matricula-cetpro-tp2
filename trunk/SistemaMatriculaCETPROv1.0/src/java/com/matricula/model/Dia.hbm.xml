@@ -1,9 +1,9 @@
 <?xml version="1.0"?>
 <!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
-"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
-<!-- Generated 17-nov-2013 16:20:47 by Hibernate Tools 3.6.0 -->
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 9/12/2013 01:55:35 AM by Hibernate Tools 3.2.1.GA -->
 <hibernate-mapping>
-    <class name="com.matricula.model.Dia" table="DIA" catalog="matriculatp2">
+    <class name="com.matricula.model.Dia" table="DIA" catalog="matriculacetpro">
         <id name="idDia" type="int">
             <column name="idDia" />
             <generator class="assigned" />
@@ -14,7 +14,7 @@
         <property name="nomDia" type="string">
             <column name="nomDia" length="45" />
         </property>
-        <set name="grupoDias" table="GRUPO_DIA" inverse="true" lazy="true" fetch="select">
+        <set name="grupoDias" inverse="true">
             <key>
                 <column name="DIA_idDia" not-null="true" />
             </key>
