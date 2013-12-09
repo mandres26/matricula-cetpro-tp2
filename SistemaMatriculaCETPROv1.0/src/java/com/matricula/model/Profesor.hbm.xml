@@ -1,10 +1,10 @@
 <?xml version="1.0"?>
 <!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
-"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
-<!-- Generated 17-nov-2013 16:20:47 by Hibernate Tools 3.6.0 -->
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 9/12/2013 01:55:35 AM by Hibernate Tools 3.2.1.GA -->
 <hibernate-mapping>
-    <class name="com.matricula.model.Profesor" table="PROFESOR" catalog="matriculatp2">
-        <id name="idProfesor" type="java.lang.Integer">
+    <class name="com.matricula.model.Profesor" table="PROFESOR" catalog="matriculacetpro">
+        <id name="idProfesor" type="int">
             <column name="idProfesor" />
             <generator class="assigned" />
         </id>
@@ -30,13 +30,13 @@
             <column name="email" length="45" />
         </property>
         <property name="edad" type="java.lang.Integer">
-            <column name="edad"/>
+            <column name="edad" />
         </property>
-        <property name="numFijo" type="java.lang.Integer">
-            <column name="numFijo" precision="7" scale="0" />
+        <property name="numFijo" type="string">
+            <column name="numFijo" length="45" />
         </property>
-        <property name="numMovil" type="java.lang.Integer">
-            <column name="numMovil" precision="9" scale="0" />
+        <property name="numMovil" type="string">
+            <column name="numMovil" length="45" />
         </property>
         <property name="domicilio" type="string">
             <column name="domicilio" length="45" />
@@ -44,7 +44,7 @@
         <property name="gradEstudios" type="string">
             <column name="gradEstudios" length="45" />
         </property>
-        <set name="grupos" table="GRUPO" inverse="true" lazy="true" fetch="select">
+        <set name="grupos" inverse="true">
             <key>
                 <column name="PROFESOR_codProfesor" not-null="true" />
             </key>

@@ -1,9 +1,9 @@
 <?xml version="1.0"?>
 <!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
-"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
-<!-- Generated 17-nov-2013 16:20:47 by Hibernate Tools 3.6.0 -->
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 9/12/2013 01:55:35 AM by Hibernate Tools 3.2.1.GA -->
 <hibernate-mapping>
-    <class name="com.matricula.model.Modulo" table="MODULO" catalog="matriculatp2">
+    <class name="com.matricula.model.Modulo" table="MODULO" catalog="matriculacetpro">
         <id name="idModulo" type="int">
             <column name="idModulo" />
             <generator class="assigned" />
@@ -12,12 +12,18 @@
             <column name="ESPECIALIDAD_RESOLUCION_codEspecialidad_Resolucion" not-null="true" />
         </many-to-one>
         <property name="nombreModulo" type="string">
-            <column name="nombreModulo" length="45" />
+            <column name="nombreModulo" length="80" />
         </property>
         <property name="horasModulo" type="string">
             <column name="horasModulo" length="45" />
         </property>
-        <set name="capacidadTerminals" table="CAPACIDAD_TERMINAL" inverse="true" lazy="true" fetch="select">
+        <set name="grupos" inverse="true">
+            <key>
+                <column name="MODULO_idModulo" not-null="true" />
+            </key>
+            <one-to-many class="com.matricula.model.Grupo" />
+        </set>
+        <set name="capacidadTerminals" inverse="true">
             <key>
                 <column name="MODULO_codModulo" not-null="true" />
             </key>

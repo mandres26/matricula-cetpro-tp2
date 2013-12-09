@@ -1,9 +1,9 @@
 <?xml version="1.0"?>
 <!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
-"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
-<!-- Generated 17-nov-2013 16:20:47 by Hibernate Tools 3.6.0 -->
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 9/12/2013 01:55:35 AM by Hibernate Tools 3.2.1.GA -->
 <hibernate-mapping>
-    <class name="com.matricula.model.Especialidad" table="ESPECIALIDAD" catalog="matriculatp2">
+    <class name="com.matricula.model.Especialidad" table="ESPECIALIDAD" catalog="matriculacetpro">
         <id name="idEspecialidad" type="int">
             <column name="idEspecialidad" />
             <generator class="assigned" />
@@ -12,18 +12,18 @@
             <column name="RESOLUCION_DIRECTORAL_numResolucionD" not-null="true" />
         </many-to-one>
         <property name="nombreEspecialidad" type="string">
-            <column name="nombreEspecialidad" length="45" />
+            <column name="nombreEspecialidad" length="90" />
         </property>
         <property name="cicloEspecialidad" type="string">
             <column name="cicloEspecialidad" length="45" />
         </property>
-        <set name="modulos" table="MODULO" inverse="true" lazy="true" fetch="select">
+        <set name="modulos" inverse="true">
             <key>
                 <column name="ESPECIALIDAD_RESOLUCION_codEspecialidad_Resolucion" not-null="true" />
             </key>
             <one-to-many class="com.matricula.model.Modulo" />
         </set>
-        <set name="curriculaAnuals" table="CURRICULA_ANUAL" inverse="true" lazy="true" fetch="select">
+        <set name="curriculaAnuals" inverse="true">
             <key>
                 <column name="ESPECIALIDAD_idEspecialidad" not-null="true" />
             </key>
