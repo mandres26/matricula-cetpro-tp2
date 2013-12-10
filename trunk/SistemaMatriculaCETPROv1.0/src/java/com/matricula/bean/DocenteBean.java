@@ -85,8 +85,8 @@ public class DocenteBean implements Serializable{
     }
 
     public int getCodigo() {
-        DocenteDao docenteDao = new DocenteDaoImpl();
-        codigo = Integer.parseInt(docenteDao.calcularMax().toString())+1;
+       // DocenteDao docenteDao = new DocenteDaoImpl();
+       // codigo = Integer.parseInt(docenteDao.calcularMax().toString())+1;
         return codigo;
     }
 
