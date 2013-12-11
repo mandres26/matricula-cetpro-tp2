@@ -30,7 +30,7 @@ public class DocenteBean implements Serializable{
     private int meses[] = {1,2,3,4,5,6,7,8,9,10,11,12};
     private int años[] = {1991,1992,1993};
   
-    private int codigo =123445;
+    private int codigo =123446;
     private Profesor profesor;
     private List<Profesor> profesores;    
     private List<Profesor>  profesoresFiltrados;
@@ -88,8 +88,8 @@ public class DocenteBean implements Serializable{
     }
 
     public int getCodigo() {
-       // DocenteDao docenteDao = new DocenteDaoImpl();
-       // codigo = Integer.parseInt(docenteDao.calcularMax().toString())+1;
+        DocenteDao docenteDao = new DocenteDaoImpl();
+        codigo = Integer.parseInt(docenteDao.calcularMax().toString())+1;
         return codigo;
     }
 
@@ -131,7 +131,7 @@ public class DocenteBean implements Serializable{
         this.profesorSeleccionado = profesorSeleccionado;
     }
     
-     public void añadirProfesor(){
+     public void añadirProfesor(ActionEvent actionEvent){
         RequestContext context = RequestContext.getCurrentInstance();
         FacesMessage msg = null;
         boolean registrado = false;
@@ -188,18 +188,7 @@ public class DocenteBean implements Serializable{
         context.addCallbackParam("regAlu", eliminado);  
     }
         
-        
-       /* 
-      public void delete(){
-       DocenteDao docentedao  = new DocenteDaoImpl();
-        docentedao.delete(profesor);
-        } 
-    
-     public void update(){
-       DocenteDao docentedao  = new DocenteDaoImpl();
-        docentedao.update(profesor);
-        } 
-     */
+ 
      
        public void cargarProfesores(){
        DocenteDao pro=new DocenteDaoImpl();

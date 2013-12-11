@@ -176,7 +176,8 @@ public class RegistrarPCBean implements Serializable {
 
     public void cargarDocente() {
         DocenteDao al = new DocenteDaoImpl();
-        profesores = al.cargarProfesor();
+    //    profesores = al.cargarProfes;
+        profesores = al.getAll();
     }
     //////////////////////////////////////////////////
 

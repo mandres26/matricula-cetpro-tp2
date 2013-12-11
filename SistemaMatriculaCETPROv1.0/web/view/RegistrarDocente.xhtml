@@ -182,7 +182,7 @@ and open the template in the editor.
         </h:panelGrid>
                 
           
-            <p:commandButton value="Registrar"  actionListener="#{docenteBean.añadirProfesor}" oncomplete="handleLoginRequest(xhr, status, args)" style="width: 200px; font-size: 25px;" update=":growl"/>    
+          <p:commandButton value="Registrar"  actionListener="#{docenteBean.añadirProfesor}" oncomplete="handleLoginRequest(xhr, status, args)" style="width: 200px; font-size: 25px;" update=":growl"/>    
           
            
         <script type="text/javascript">  
@@ -191,7 +191,7 @@ and open the template in the editor.
             }  
             
             function handleLoginRequest(xhr, status, args) {  
-                if(args.validationFailed || !args.regProfe) {  
+                if(args.validationFailed || !args.regAlu) {  
                      
                 } else {  
                     window.location="/SistemaMatriculaCETPROv1.0/view/index.jsf";
