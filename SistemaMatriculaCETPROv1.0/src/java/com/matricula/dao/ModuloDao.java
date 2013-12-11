@@ -18,4 +18,5 @@ public interface ModuloDao {
     public void insertarModulo(Integer idMod, ModuloDTO mod, Especialidad esp);
     public int ultimaId();
     public List<Modulo> listarModulos(Integer idEspecialidad);
+    public Modulo getModulo(int idca);
 }
