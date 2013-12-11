@@ -17,6 +17,7 @@ import com.matricula.dao.DocenteDao;
 import com.matricula.dao.impl.DocenteDaoImpl;
 import com.matricula.model.Alumno;
 import java.sql.Date;
+import java.util.List;
 /**
  *
  * @author Rosy
@@ -31,7 +32,9 @@ public class DocenteBean implements Serializable{
   
     private int codigo =123445;
     private Profesor profesor;
-
+    private List<Profesor> profesores;    
+    private List<Profesor>  profesoresFiltrados;
+    private Profesor profesorSeleccionado;
     
     public DocenteBean(){
     
@@ -103,10 +106,31 @@ public class DocenteBean implements Serializable{
     public void setProfesor(Profesor profesor) {
         this.profesor = profesor;
     }
-    
 
+    public List<Profesor> getProfesores() {
+        return profesores;
+    }
+
+    public void setProfesores(List<Profesor> profesores) {
+        this.profesores = profesores;
+    }
+
+    public List<Profesor> getProfesoresFiltrados() {
+        return profesoresFiltrados;
+    }
+
+    public void setProfesoresFiltrados(List<Profesor> profesoresFiltrados) {
+        this.profesoresFiltrados = profesoresFiltrados;
+    }
+
+    public Profesor getProfesorSeleccionado() {
+        return profesorSeleccionado;
+    }
+
+    public void setProfesorSeleccionado(Profesor profesorSeleccionado) {
+        this.profesorSeleccionado = profesorSeleccionado;
+    }
     
-   
      public void añadirProfesor(){
         RequestContext context = RequestContext.getCurrentInstance();
         FacesMessage msg = null;
@@ -125,25 +149,47 @@ public class DocenteBean implements Serializable{
             msg = new FacesMessage(FacesMessage.SEVERITY_INFO, "Registrado: ", profesor.getNombres());  
             registrado = true;
         } catch (Exception e) {
-            System.out.println("Error al añadir alumno, en DocenteBean: "+e);
+            System.out.println("Error al añadir Docente, en DocenteBean: "+e);
         }  
         FacesContext.getCurrentInstance().addMessage(null, msg);  
         context.addCallbackParam("regAlu", registrado);  
         profesor=new Profesor();
     }
      
+        public void updateDocente(ActionEvent actionEvent){
+        RequestContext context = RequestContext.getCurrentInstance();
+        FacesMessage msg = null;
+        boolean modificado = false;
+        DocenteDao docenteDao = new DocenteDaoImpl();
+        try {
+            docenteDao.updateProfesor(profesor);
+            msg = new FacesMessage(FacesMessage.SEVERITY_INFO, "Modificado: ", profesor.getNombres());  
+            modificado = true;
+        } catch (Exception e) {
+            System.out.println("Error al modificar un docente, en DocenteBean: "+e);
+        } 
+        FacesContext.getCurrentInstance().addMessage(null, msg);  
+        context.addCallbackParam("regAlu", modificado);  
+    }
      
-     
-     
-     
-     
-     
-     
-     
-     
-     
-     
-    
+     public void deleteDocente(ActionEvent actionEvent){
+        RequestContext context = RequestContext.getCurrentInstance();
+        FacesMessage msg = null;
+        boolean eliminado = false;
+        DocenteDao docenteDao = new DocenteDaoImpl();
+        try {
+            docenteDao.deleteProfesor(profesor);
+            msg = new FacesMessage(FacesMessage.SEVERITY_INFO, "Eliminado: ", profesor.getNombres());  
+            eliminado = true;
+        } catch (Exception e) {
+            System.out.println("Error al eleminar un docente, en docenteBean: "+e);
+        } 
+        FacesContext.getCurrentInstance().addMessage(null, msg);  
+        context.addCallbackParam("regAlu", eliminado);  
+    }
+        
+        
+       /* 
       public void delete(){
        DocenteDao docentedao  = new DocenteDaoImpl();
         docentedao.delete(profesor);
@@ -153,6 +199,12 @@ public class DocenteBean implements Serializable{
        DocenteDao docentedao  = new DocenteDaoImpl();
         docentedao.update(profesor);
         } 
+     */
+     
+       public void cargarProfesores(){
+       DocenteDao pro=new DocenteDaoImpl();
+       profesores= pro.getAll();    
+    }
      }
 
     
