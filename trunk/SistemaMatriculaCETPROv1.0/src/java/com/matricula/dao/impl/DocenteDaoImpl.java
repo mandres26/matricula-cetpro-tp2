@@ -60,7 +60,7 @@ public class DocenteDaoImpl  implements DocenteDao{
         profesor.setEmail(profesor.getEmail());
         profesor.setNumFijo(profesor.getNumFijo());
         profesor.setNumMovil(profesor.getNumMovil());
-        session.update(profesor);
+        session.saveOrUpdate(profesor);
         session.getTransaction().commit();
        // docenteDao.delete(docente);
     }
