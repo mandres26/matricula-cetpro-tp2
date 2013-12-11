@@ -14,8 +14,8 @@ import java.util.List;
  */
 public interface DocenteDao {
     public void añadirProfesor(Profesor profesor);
-    public void delete(Profesor profesor);
-    public void update(Profesor profesor);
+    public void deleteProfesor(Profesor profesor);
+    public void updateProfesor(Profesor profesor);
     public Object calcularMax();
     public List<Profesor> getAll();
    

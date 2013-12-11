@@ -35,7 +35,7 @@ public class DocenteDaoImpl  implements DocenteDao{
     }
  
     @Override
-    public void delete(Profesor profesor) {
+    public void deleteProfesor(Profesor profesor) {
         Session session = HibernateUtil.getSessionFactory().openSession();
         session.getTransaction().begin();
         session.delete(profesor);
@@ -44,9 +44,22 @@ public class DocenteDaoImpl  implements DocenteDao{
     }
 
     @Override
-    public void update(Profesor profesor) {
+    public void updateProfesor(Profesor profesor) {
         Session session = HibernateUtil.getSessionFactory().openSession();
         session.getTransaction().begin();
+        profesor = new Profesor();
+        profesor.setDni(profesor.getDni());
+        profesor.setApePaterno(profesor.getApePaterno());
+        profesor.setApeMaterno(profesor.getApeMaterno());
+        profesor.setNombres(profesor.getNombres());
+        profesor.setDni(profesor.getDni());
+        profesor.setSexo(profesor.getSexo());
+        profesor.setFecNacimiento(profesor.getFecNacimiento());
+        profesor.setGradEstudios(profesor.getGradEstudios());
+        profesor.setDomicilio(profesor.getDomicilio());
+        profesor.setEmail(profesor.getEmail());
+        profesor.setNumFijo(profesor.getNumFijo());
+        profesor.setNumMovil(profesor.getNumMovil());
         session.update(profesor);
         session.getTransaction().commit();
        // docenteDao.delete(docente);
