@@ -9,6 +9,7 @@ import com.matricula.dto.ModuloDTO;
 import com.matricula.model.Especialidad;
 import com.matricula.model.Modulo;
 import com.matricula.util.Constante;
+import com.matricula.util.HibernateUtil;
 import com.matricula.util.Util;
 import java.util.List;
 import org.hibernate.Query;
@@ -62,5 +63,19 @@ public class ModuloDaoImpl implements ModuloDao{
         List lista =query.list();        
         t.commit();
         return lista;
+    }
+    
+    
+        public Modulo getModulo(int idca) {
+        Modulo ca=null;
+  
+        Session session = HibernateUtil.getSessionFactory().openSession();
+        Transaction t = session.beginTransaction();
+ //       org.hibernate.Transaction tx = session.beginTransaction();
+        Query q = session.createQuery ("from Modulo where idModulo= "+idca);
+        ca = (Modulo) q.uniqueResult();
+
+    return ca;
+    
     }
 }
