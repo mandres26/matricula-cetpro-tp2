@@ -10,8 +10,8 @@
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
         <link href="./../Resources/CSS/default.css" rel="stylesheet" type="text/css" />
         <link href="./../Resources/CSS/cssLayout.css" rel="stylesheet" type="text/css" />
-        <title>Principal</title>
         <link rel="stylesheet" href="Resources/CSS/estilos.css" />
+        <title>Principal</title>
     </h:head>
 
     <h:body>
@@ -53,8 +53,8 @@
                             
                         <p:submenu label="Ayuda" icon="ui-icon-help">  
                             <p:submenu label="Contenidos" icon="ui-icon-search">  
-                                <p:menuitem value="Manual de Usuario" url="#" />  
-                                <p:menuitem value="Manual del Sistema" url="#" /> 
+                                <p:menuitem value="Manual de Usuario" onclick="gotoManualUsuario()" />  
+                                <p:menuitem value="Manual del Sistema" onclick="gotoManualSistema()" /> 
                             </p:submenu>    
                         </p:submenu> 
 
@@ -68,7 +68,7 @@
                 <br/>
                 <p:fieldset legend="Matricula 2013">  
                     <h:panelGrid columns="2" cellpadding="10">  
-                        <p:graphicImage value="/Resources/images/matricula.png"  onclick="gotoRegistrarAlumno()" style="cursor: pointer"/>  
+                        <p:graphicImage value="/Resources/images/iconoMatricula.png"  onclick="gotoRegistrarAlumno()" style="cursor: pointer; width: 100px"/>  
                         <h:outputText  
                             value="Este proyecto es un esfuerzo por mejorar la calidad de la educación de nuestra población y 
                             encontrando la necesidad que cuenta esta institución se nos propone el reto de poder mejorar sus 
@@ -81,8 +81,7 @@
                 <p:fieldset legend="Consulta de Alumnos">  
                     <h:panelGrid columns="2" cellpadding="10">  
                         <p:graphicImage value="/Resources/images/consulta.jpg" />  
-                        <h:outputText  
-                            value="" />  
+                        <h:outputText  value="" />  
                     </h:panelGrid>  
                 </p:fieldset>             
 
@@ -108,6 +107,14 @@
             
             function gotoConsultarRD() {  
                 window.location="/SistemaMatriculaCETPROv1.0/view/consultarRD.jsf";
+            }
+            
+            function gotoManualSistema() {  
+                window.open("/SistemaMatriculaCETPROv1.0/Resources/pdf/MANUAL-SISTEMA.pdf","_blank")
+            }
+            
+            function gotoManualUsuario() {  
+                window.open("/SistemaMatriculaCETPROv1.0/Resources/pdf/MANUAL-USUARIO.pdf","_blank");
             }
         </script>
         <script type="text/javascript">  

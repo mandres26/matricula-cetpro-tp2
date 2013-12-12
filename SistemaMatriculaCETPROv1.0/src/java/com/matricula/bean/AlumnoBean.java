@@ -32,7 +32,7 @@ public class AlumnoBean implements Serializable {
     private int dia, mes, año;
     private int dias[] = {1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,19,20,21,22,23,24,25,26,27,28,29,30};
     private int meses[] = {1,2,3,4,5,6,7,8,9,10,11,12};
-    private int años[] = {1991,1992,1993};
+    private int años[] = {1998,1997,1996,1995,1994,1993,1992,1991,1990,1989,1988,1987,1986,1985,1984,1983,1982,1981,1980,1979};
     private String regiones[] = {"Lima","Callao"};
     private String provincias[] = {"Barranca","Canta","Cañete","Cajatambo","Huaral","Huarochiri","Huaura","Lima","Oyon","Yauyos"};
     private String distritos[] = {"Lima","Ancón","Ate","Barranco","Breña","Carabayllo","Chaclacayo",
