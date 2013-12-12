@@ -59,10 +59,14 @@ public class AlumnoBean implements Serializable {
 
     public String getCodigo() {
         AlumnoDao alumnoDao = new AlumnoDaoImpl();
-        //codigo=alumnoDao.calcularMax2().substring(1);
         codigo = String.valueOf(alumnoDao.calcularMax()).substring(1);
-        long valor = Long.parseLong(codigo)+1;
-        codigo = "0"+String.valueOf(valor);
+        long valor;
+        if (codigo==null) {
+            valor = Long.parseLong("663344030912");
+        } else {
+            valor = Long.parseLong(codigo)+1;
+            codigo = "0"+String.valueOf(valor);
+        } 
         return codigo;
     }
 
