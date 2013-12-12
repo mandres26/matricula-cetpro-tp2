@@ -31,11 +31,12 @@ and open the template in the editor.
 
         <p:growl id="growl" showDetail="true" life="3000" />         
 
+
         <h:form id="frm">
             
                 <h:form>  
                     <p:growl id="messages"/>   
-                    <p:menubar>  
+                      <p:menubar>  
                         <p:menuitem value="Inicio" icon="ui-icon-home" url="/view/index.jsf"/>
 
                         <p:submenu label="Editar" icon="ui-icon-pencil">  
@@ -45,24 +46,24 @@ and open the template in the editor.
 
                         <p:submenu label="Acciones" icon="ui-icon-gear">  
                             <p:submenu label="Alumno" icon="ui-icon-refresh">  
-                                <p:menuitem value="Registrar Alumno" url="/view/registrarAlumno.jsf" icon="ui-icon-disk" update="messages"/>  
-                                <p:menuitem value="Modificar Alumno" actionListener="#{menuBean.update}" icon="ui-icon-arrowrefresh-1-w" update="messages"/>  
-                                <p:menuitem value="Consultar datos de Alumno" url="/view/buscarAlumno.jsf"  icon="ui-icon-search" update="messages"/>  
+                                <p:menuitem value="Registrar Alumno" url="/view/registrarAlumno.jsf" icon="ui-icon-disk" update="messages" rendered="#{LoginBean.comprobarUsuarioRegistrarAlumno()}"/>  
+                                <p:menuitem value="Modificar Alumno" actionListener="#{menuBean.update}" icon="ui-icon-arrowrefresh-1-w" update="messages" rendered="#{LoginBean.comprobarUsuarioModificarAlumno()}"/>  
+                                <p:menuitem value="Consultar datos de Alumno" url="/view/buscarAlumno.jsf"  icon="ui-icon-search" update="messages" rendered="#{LoginBean.comprobarUsuarioBuscarAlumno()}"/>  
                             </p:submenu>  
 
-                            <p:menuitem value="Registrar Docente" actionListener="#{menuBean.delete}" icon="ui-icon-disk" update="messages" ajax="false"/>
+                            <p:menuitem value="Registrar Docente" actionListener="#{menuBean.delete}" icon="ui-icon-disk" update="messages" ajax="false" rendered="#{LoginBean.comprobarUsuarioRegistrarDocente()}"/>
 
-                            <p:submenu label="Resolucion Directoral" icon="ui-icon-newwin">  
-                                <p:menuitem value="Registrar" actionListener="#{menuBean.delete}" icon="ui-icon-disk" update="messages" ajax="false"/>
-                                <p:menuitem value="Mantener especialidaes" actionListener="#{menuBean.delete}" icon="ui-icon-disk" update="messages" ajax="false"/>
+                            <p:submenu label="Resolucion Directoral" icon="ui-icon-newwin" rendered="#{LoginBean.comprobarUsuarioResolucionDirectoral()}">  
+                                <p:menuitem value="Registrar" actionListener="#{menuBean.delete}" icon="ui-icon-disk" update="messages" ajax="false" rendered="#{LoginBean.comprobarUsuarioRegistrarRd()}"/>
+                                <p:menuitem value="Mantener especialidaes" actionListener="#{menuBean.delete}" icon="ui-icon-disk" update="messages" ajax="false" rendered="#{LoginBean.comprobarUsuarioManternerEspecialidades()}"/>
                             </p:submenu>  
 
                             <p:submenu label="Programacion Curricular" icon="ui-icon-newwin">  
-                                <p:menuitem value="Registrar" actionListener="#{menuBean.delete}" icon="ui-icon-disk" update="messages" ajax="false"/>
-                                <p:menuitem value="Consultar modulos" actionListener="#{menuBean.delete}" icon="ui-icon-disk" update="messages" ajax="false"/>
+                                <p:menuitem value="Registrar" actionListener="#{menuBean.delete}" icon="ui-icon-disk" update="messages" ajax="false" rendered="#{LoginBean.comprobarUsuarioRegistrarPc()}"/>
+                                <p:menuitem value="Consultar modulos" actionListener="#{menuBean.delete}" icon="ui-icon-disk" update="messages" ajax="false" rendered="#{LoginBean.comprobarUsuarioConsultarModulos()}"/>
                             </p:submenu> 
 
-                            <p:menuitem value="Realizar Matricula" actionListener="#{menuBean.delete}" icon="ui-icon-disk" update="messages" ajax="false"/>  
+                            <p:menuitem value="Realizar Matricula" actionListener="#{menuBean.delete}" icon="ui-icon-disk" update="messages" ajax="false" rendered="#{LoginBean.comprobarUsuarioRegistrarMatricula()}"/>  
                         </p:submenu>   
 
                         <p:submenu label="Ayuda" icon="ui-icon-help">  
@@ -115,8 +116,7 @@ and open the template in the editor.
         <p:commandButton id="cargarAlumnos"  actionListener="#{alumnoBean.cargarAlumnos}" value="Cargar Alumnos" 
                update=":form" /> 
         <p:commandButton id="botonConsulta" value="Consultar Alumno" icon="ui-icon-search"  
-        update=":form:display"  oncomplete="carDialog.show()"/>     
-          
+        update=":form:display"  oncomplete="gotoConsultarDatosAlumno()"/>                       
         </f:facet> 
 
                     </p:dataTable>  
@@ -173,7 +173,11 @@ and open the template in the editor.
                 </h:form>
                 
               
-                
+                <script type="text/javascript">  
+                    function gotoConsultarDatosAlumno() {  
+                        window.location="/SistemaMatriculaCETPROv1.0/view/consultarDatosAlumno.jsf";
+                    }  
+                </script>
                 
                                             
                       

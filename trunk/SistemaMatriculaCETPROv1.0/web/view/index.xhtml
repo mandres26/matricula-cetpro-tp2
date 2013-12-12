@@ -25,7 +25,7 @@
             <div id="content" class="center_content">
                 <h:form>  
                     <p:growl id="messages"/>   
-                    <p:menubar>                          
+                   <p:menubar>                          
                         <p:menuitem value="Inicio" icon="ui-icon-home" url="/view/index.jsf"/>
 
                         <p:submenu label="Editar" icon="ui-icon-pencil">  
@@ -34,26 +34,26 @@
                         </p:submenu>   
 
                        <p:submenu label="Registros" icon="ui-icon-gear">  
-                            <p:menuitem value="Registrar Alumno" url="/view/registrarAlumno.jsf"/>
-                            <p:menuitem value="Registrar Docente" url="/view/RegistrarDocente.jsf"/>
-                            <p:menuitem value="Registrar Resolucion Directoral" url="/view/registrarRD.jsf"/>
-                            <p:menuitem value="Registrar Programacion Curricular" url="/view/index.jsf"/>
-                            <p:menuitem value="Registrar Matricula" url="/view/index.jsf"/>
+                           <p:menuitem value="Registrar Alumno" url="/view/registrarAlumno.jsf" rendered="#{LoginBean.comprobarUsuarioRegistrarAlumno()}"/>
+                           <p:menuitem value="Registrar Docente" url="/view/registrarDocente.jsf" rendered="#{LoginBean.comprobarUsuarioRegistrarDocente()}"/>
+                            <p:menuitem value="Registrar Resolucion Directoral" url="/view/registrarRD.jsf" rendered="#{LoginBean.comprobarUsuarioRegistrarRd()}"/>
+                            <p:menuitem value="Registrar Programacion Curricular" url="/view/registrarPC.jsf" rendered="#{LoginBean.comprobarUsuarioRegistrarPc()}"/>
+                            <p:menuitem value="Registrar Matricula" url="/view/index.jsf" rendered="#{LoginBean.comprobarUsuarioRegistrarMatricula()}"/>
                        </p:submenu>
  
                         <p:submenu label="Mantenimientos">
-                            <p:menuitem value="Modificar Alumno" url="/view/buscarAlumno_1.jsf"/>
-                            <p:menuitem value="Mantener Docente" url="/view/ConsultaDocente.jsf"/>
-                            <p:menuitem value="Mantener Especialidades" url="/view/mantenerRD.jsf"/>
-                            <p:menuitem value="Mantener Programacion Curricular" url="/view/index.jsf"/>
-                            <p:menuitem value="Mantener Resolucion Directoral" url="/view/mantenerRD.jsf"/>
+                            <p:menuitem value="Modificar Alumno" url="/view/buscarAlumno_1.jsf" rendered="#{LoginBean.comprobarUsuarioModificarAlumno()}"/>
+                            <p:menuitem value="Mantener Docente" url="/view/index.jsf" rendered="#{LoginBean.comprobarUsuarioMantenerDocente()}"/>
+                            <p:menuitem value="Mantener Especialidades" url="/view/mantenerRD.jsf" rendered="#{LoginBean.comprobarUsuarioMantenerRd()}"/>
+                            <p:menuitem value="Mantener Programacion Curricular" url="/view/index.jsf" rendered="#{LoginBean.comprobarUsuarioMantenerPc()}"/>
+                            <p:menuitem value="Mantener Resolucion Directoral" url="/view/mantenerRD.jsf" rendered="#{LoginBean.comprobarUsuarioMantenerRd()}"/>
                         </p:submenu>  
                         
                         <p:submenu label="Consultas">
-                                <p:menuitem value="Consutar Alumno" url="/view/buscarAlumno.jsf"/>
-                                <p:menuitem value="Consultar Modulos" url="/view/index.jsf"/>                                
-                                <p:menuitem value="Consultar Programacion Curricular" url="/view/consultarProgramacionC.jsf"/>
-                                <p:menuitem value="Consultar Resolución Directoral" url="/view/consultarRD.jsf"/>
+                                <p:menuitem value="Consutar Alumno" url="/view/buscarAlumno.jsf" rendered="#{LoginBean.comprobarUsuarioBuscarAlumno()}"/>
+                                <p:menuitem value="Consultar Modulos" url="/view/index.jsf" rendered="#{LoginBean.comprobarUsuarioConsultarModulos()}"/>                                
+                                <p:menuitem value="Consultar Programacion Curricular" url="/view/consultarProgramacionC.jsf" rendered="#{LoginBean.comprobarUsuarioConsultarPc()}"/>
+                                <p:menuitem value="Consultar Resolución Directoral" url="/view/consultarRD.jsf" rendered="#{LoginBean.comprobarConsultarRd()}"/>
                             </p:submenu>
                             
                        
