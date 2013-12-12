@@ -2,8 +2,10 @@ package com.matricula.model;
 // Generated 9/12/2013 01:55:35 AM by Hibernate Tools 3.2.1.GA
 
 
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
@@ -214,7 +216,14 @@ public class Alumno  implements java.io.Serializable {
         this.matriculas = matriculas;
     }
 
-
+ /*Convierte a un array de matriculas al set*/
+ public List<Matricula> listaMatriculas(){
+    List<Matricula> lista = new ArrayList<Matricula>();
+        for (Object obMat : matriculas.toArray()) {
+            lista.add((Matricula)obMat);
+        }
+    return lista;
+    }
 
 
 }

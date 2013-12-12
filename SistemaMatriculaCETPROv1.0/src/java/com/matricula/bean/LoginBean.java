@@ -86,4 +86,125 @@ public class LoginBean implements java.io.Serializable{
         Session session = (Session) fc.getExternalContext().getSession(false);  
         session.close();  
     }
+     /*Para comprobar si el usuario debe verlo o no*/
+    public boolean comprobarUsuarioRegistrarAlumno(){
+    if(usuario.getNombreUsuario().equals("admin")){
+    return true;    }
+    else if(usuario.getNombreUsuario().equals("secretaría")){
+         return true;}
+    else{
+        return false;}        
+    }
+    
+    public boolean comprobarUsuarioRegistrarDocente(){
+    if(usuario.getNombreUsuario().equals("admin")){
+    return true;    }
+    else if(usuario.getNombreUsuario().equals("secretaría")){
+         return false;}
+    else{
+        return true;}   
+    }
+    public boolean comprobarUsuarioRegistrarRd(){
+        if(usuario.getNombreUsuario().equals("admin")){
+    return true;    }
+    else if(usuario.getNombreUsuario().equals("secretaría")){
+         return false;}
+    else{
+        return true;}   
+    }
+    public boolean comprobarUsuarioRegistrarPc(){
+    if(usuario.getNombreUsuario().equals("admin")){
+    return true;    }
+    else if(usuario.getNombreUsuario().equals("secretaría")){
+         return false;}
+    else{
+        return true;}   }          
+    public boolean comprobarUsuarioRegistrarMatricula(){
+    if(usuario.getNombreUsuario().equals("admin")){
+    return true;    }
+    else if(usuario.getNombreUsuario().equals("secretaría")){
+         return true;}
+    else{
+        return false;}   }
+    public boolean comprobarUsuarioBuscarAlumno1(){
+    if(usuario.getNombreUsuario().equals("admin")){
+    return true;    }
+    else if(usuario.getNombreUsuario().equals("secretaría")){
+         return true;}
+    else{
+        return false;}   }
+    public boolean comprobarUsuarioMantenerDocente(){
+    if(usuario.getNombreUsuario().equals("admin")){
+    return true;    }
+    else if(usuario.getNombreUsuario().equals("secretaría")){
+         return false;}
+    else{
+        return false;}   }
+    public boolean comprobarUsuarioMantenerRd(){
+    if(usuario.getNombreUsuario().equals("admin")){
+    return true;    }
+    else if(usuario.getNombreUsuario().equals("secretaría")){
+         return false;}
+    else{
+        return true;}   }
+    public boolean comprobarUsuarioMantenerPc(){
+    if(usuario.getNombreUsuario().equals("admin")){
+    return true;    }
+    else if(usuario.getNombreUsuario().equals("secretaría")){
+         return false;}
+    else{
+        return true;}   }
+            
+    public boolean comprobarUsuarioBuscarAlumno(){
+    if(usuario.getNombreUsuario().equals("admin")){
+    return true;    }
+    else if(usuario.getNombreUsuario().equals("secretaría")){
+         return true;}
+    else{
+        return false;}   }
+    public boolean comprobarUsuarioConsultarModulos(){
+    if(usuario.getNombreUsuario().equals("admin")){
+    return true;    }
+    else if(usuario.getNombreUsuario().equals("secretaría")){
+         return true;}
+    else{
+        return true;}   }
+    public boolean comprobarUsuarioConsultarPc(){
+    if(usuario.getNombreUsuario().equals("admin")){
+    return true;    }
+    else if(usuario.getNombreUsuario().equals("secretaría")){
+         return false;}
+    else{
+        return true;}   }
+    public boolean comprobarConsultarRd(){
+    if(usuario.getNombreUsuario().equals("admin")){
+    return true;    }
+    else if(usuario.getNombreUsuario().equals("secretaría")){
+         return false;}
+    else{
+        return true;}   } 
+     public boolean comprobarUsuarioModificarAlumno(){
+      if(usuario.getNombreUsuario().equals("admin")){
+    return true;    }
+    else if(usuario.getNombreUsuario().equals("secretaría")){
+         return true;}
+    else{
+        return false;} 
+     }
+     public boolean comprobarUsuarioManternerEspecialidades(){
+      if(usuario.getNombreUsuario().equals("admin")){
+    return true;    }
+    else if(usuario.getNombreUsuario().equals("secretaría")){
+         return false;}
+    else{
+        return true;}          
+     }
+     public boolean comprobarUsuarioResolucionDirectoral(){
+      if(usuario.getNombreUsuario().equals("admin")){
+    return true;    }
+    else if(usuario.getNombreUsuario().equals("secretaría")){
+         return false;}
+    else{
+        return true;}     
+     }
 }
