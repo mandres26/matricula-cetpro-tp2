@@ -22,7 +22,7 @@ public class ModuloBean {
      public List<Modulo> modulos; 
      public Modulo modulo;
      public Modulo moduloSeleccionado;
-     public Modulo modulosFiltrados;
+     public List<Modulo> modulosFiltrados;
      
      public void cargarModulos(){
         ModuloDao md=new ModuloDaoImpl();
@@ -57,22 +57,26 @@ public class ModuloBean {
         this.moduloSeleccionado = moduloSeleccionado;
     }
 
-    public Modulo getModulosFiltrados() {
-        return modulosFiltrados;
-    }
 
-    public void setModulosFiltrados(Modulo modulosFiltrados) {
-        this.modulosFiltrados = modulosFiltrados;
-    }
 
     public ModuloBean() {
     }
 
-    public ModuloBean(List<Modulo> modulos, Modulo modulo, Modulo moduloSeleccionado, Modulo modulosFiltrados) {
+    public List<Modulo> getModulosFiltrados() {
+        return modulosFiltrados;
+    }
+
+    public void setModulosFiltrados(List<Modulo> modulosFiltrados) {
+        this.modulosFiltrados = modulosFiltrados;
+    }
+
+    public ModuloBean(List<Modulo> modulos, Modulo modulo, Modulo moduloSeleccionado, List<Modulo> modulosFiltrados) {
         this.modulos = modulos;
         this.modulo = modulo;
         this.moduloSeleccionado = moduloSeleccionado;
         this.modulosFiltrados = modulosFiltrados;
     }
+
+
     
 }
