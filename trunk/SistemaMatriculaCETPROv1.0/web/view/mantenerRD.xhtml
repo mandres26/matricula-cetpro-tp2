@@ -13,17 +13,17 @@
     <h:body>
         <div id="top" class="top">
             <p:panel style="alignment-adjust: central">
-            <p:graphicImage value="/Resources/images/titulo.jpg" style="width: 100%px"/>
+            <p:graphicImage value="/Resources/images/titulo.jpg" style="width: 100%"/>
             </p:panel>
         </div>
         
+        <p:growl id="growl" showDetail="true" life="3000" />
         
-        <h:form id="formRegRD" prependId="false" style="font-size:15px;text-align:center" >
-            
-            <p:growl id="messages" showDetail="true"/>  
-            
-            
-              <p:menubar >                          
+        <h:form id="frm">
+            <div id="content" class="center_content">
+                <h:form>  
+                    <p:growl id="messages"/>   
+                   <p:menubar>                          
                         <p:menuitem value="Inicio" icon="ui-icon-home" url="/view/index.jsf"/>
 
                        <p:submenu label="Registros" icon="ui-icon-disk">  
@@ -61,8 +61,15 @@
                             <p:commandButton type="button" value="Logout" icon="ui-icon-extlink" action="#{LoginBean.logout()}" onclick="gotoLogin()" ajax="false" />  
                         </f:facet>  
                     </p:menubar>  
-            
-            
+                </h:form>
+                
+                <br/>     
+                </div>
+                </h:form>
+        
+        
+        <h:form id="formRegRD" prependId="false" style="font-size:15px;text-align:center" >  
+      
             <br/>
             <h:outputText style="font-size:22px;font-weight:bold" value="Mantener Especialidad en Resolución Directoral"/>
             <br/><br/>

@@ -112,9 +112,9 @@ public class MantenerRDBean implements Serializable  {
         if(resolucionDao.existeIDenRD(idResolucion)){
             System.out.println("MSJ ID EXISTENTE");
             //Util.mostrarMensajeERROR("ID existente", "Cambie la id de la Resolución");
-            ResolucionDirectoral rd = resolucionDao.getRD(idResolucion);
-            anioInicio=rd.getAnioInicio();
-            anioFin=rd.getAnioTermino();
+            //ResolucionDirectoral rd = resolucionDao.getRD(idResolucion);
+           // anioInicio=rd.getAnioInicio();
+            //anioFin=rd.getAnioTermino();
             Util.mostrarMensajeINFO("Resolución Cargada","Éxito en la operación");
         }else{
             System.out.println("MSJ ID NO EXISTENTE");
