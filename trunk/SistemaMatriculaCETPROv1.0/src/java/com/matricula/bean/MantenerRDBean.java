@@ -9,6 +9,7 @@ import com.matricula.dao.ResolucionDirectoralDao;
 import com.matricula.dao.impl.ResolucionDirectoralDaoImpl;
 import com.matricula.dto.EspecialidadDTO;
 import com.matricula.dto.ModuloDTO;
+import com.matricula.model.ResolucionDirectoral;
 import com.matricula.util.Util;
 import java.io.Serializable;
 import java.util.ArrayList;
@@ -103,6 +104,23 @@ public class MantenerRDBean implements Serializable  {
                     anioInicio, anioFin, fecha, especialidades);
             //System.out.println("RD grabada");
             Util.mostrarMensajeINFO("Resolución Guardada","Éxito en la operación");
+        }
+    }
+    
+    private void cargarRD(){
+        ResolucionDirectoralDao resolucionDao = new ResolucionDirectoralDaoImpl();
+        if(resolucionDao.existeIDenRD(idResolucion)){
+            System.out.println("MSJ ID EXISTENTE");
+            //Util.mostrarMensajeERROR("ID existente", "Cambie la id de la Resolución");
+            ResolucionDirectoral rd = resolucionDao.getRD(idResolucion);
+            anioInicio=rd.getAnioInicio();
+            anioFin=rd.getAnioTermino();
+            Util.mostrarMensajeINFO("Resolución Cargada","Éxito en la operación");
+        }else{
+            System.out.println("MSJ ID NO EXISTENTE");
+            Util.mostrarMensajeERROR("ID No Existente", "Cambie la id de la Resolución");
+            
+            
         }
     }
 
