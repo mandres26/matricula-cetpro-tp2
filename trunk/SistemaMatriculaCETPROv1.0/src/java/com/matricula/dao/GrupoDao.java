@@ -5,6 +5,7 @@
 package com.matricula.dao;
 
 import com.matricula.dto.GrupoDTO;
+import com.matricula.model.Alumno;
 import com.matricula.model.CurriculaAnual;
 import com.matricula.model.Grupo;
 import com.matricula.model.Modulo;
@@ -23,4 +24,8 @@ public interface GrupoDao {
     public int ultimaGrupo();
     public Grupo getGrupo(int idg);
     public void insertarGrupo3(Integer idGrupo, GrupoDTO gru, Profesor pro,Turno tur, Modulo mod);
+    public List<Grupo> obtenerGrupos();
+    public Integer matriculadosEnGrupo(Integer idGrupo);
+    public void aumentarEn1(Integer idGrupo);
+    public void crearMatrícula(Alumno alumno, Grupo grupo);
 }

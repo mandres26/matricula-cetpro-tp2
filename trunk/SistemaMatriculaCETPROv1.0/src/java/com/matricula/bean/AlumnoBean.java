@@ -10,6 +10,7 @@ import com.matricula.dao.AlumnoDao;
 import com.matricula.dao.impl.AlumnoDaoImpl;
 import com.matricula.model.Alumno;
 import com.matricula.util.HibernateUtil;
+import com.matricula.util.Util;
 import java.io.Serializable;
 import java.sql.Date;
 import java.util.Calendar;
@@ -222,7 +223,7 @@ public class AlumnoBean implements Serializable {
     }
 
     public void setAlumnoSeleccionado(Alumno alumnoSeleccionado) {
-        this.alumnoSeleccionado = alumnoSeleccionado;
+        this.alumnoSeleccionado = alumnoSeleccionado;         
     }
     
     public void cargarAlumnos(){
@@ -230,6 +231,8 @@ public class AlumnoBean implements Serializable {
     alumnos=al.cargarAlumnos();    
     }
     
-
+    public void obtenerSeleccionado(){        
+        Util.setAlumnoSeleccionado(alumnoSeleccionado);
+    }
 
 }

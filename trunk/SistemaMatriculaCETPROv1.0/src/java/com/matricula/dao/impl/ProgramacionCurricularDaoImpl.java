@@ -120,7 +120,7 @@ public List getModulos(int Idmo){
     
          Session session = HibernateUtil.getSessionFactory().openSession();
         Transaction t = session.beginTransaction();
-        List moduloList = session.createQuery("from Modulo where ESPECIALIDAD_RESOLUCION_codEspecialidad_Resolucion="+Idmo).list();
+        List moduloList = session.createQuery("from Modulo where ESPECIALIDAD_idEspecialidad="+Idmo).list();
         t.commit();
         
    

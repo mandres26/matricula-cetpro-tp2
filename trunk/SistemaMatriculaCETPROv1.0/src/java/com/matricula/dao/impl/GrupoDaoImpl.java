@@ -7,15 +7,19 @@ package com.matricula.dao.impl;
 import com.matricula.dao.DiaDao;
 import com.matricula.dao.GrupoDao;
 import com.matricula.dto.GrupoDTO;
+import com.matricula.model.Alumno;
 import com.matricula.model.CurriculaAnual;
 import com.matricula.model.Grupo;
 import com.matricula.model.GrupoDia;
+import com.matricula.model.Matricula;
+import com.matricula.model.MatriculaId;
 import com.matricula.model.Modulo;
 import com.matricula.model.Profesor;
 import com.matricula.model.Turno;
 import com.matricula.util.Constante;
 import com.matricula.util.HibernateUtil;
 import com.matricula.util.Util;
+import java.util.Date;
 import java.util.List;
 import java.util.Set;
 import org.hibernate.Query;
@@ -125,5 +129,58 @@ public class GrupoDaoImpl implements GrupoDao {
         gru = (Grupo) q.uniqueResult();
 
     return gru;
-    } 
+    }
+
+    @Override
+    public List<Grupo> obtenerGrupos() {
+        Session session = Util.getCurrentSession();
+        Transaction t = session.beginTransaction();
+        List lista = session.createQuery ("from Grupo G where G.modulo IN "
+                + "(from Modulo M where M.especialidad.idEspecialidad IN "
+                + "(select DISTINCT(CA.especialidad.idEspecialidad) "
+                + "from CurriculaAnual CA where CA.progCurricular IN "
+                + "(from ProgCurricular where year(fecRegistro) = year(current_date()))))").list();
+        t.commit();
+        return lista;
+    }
+
+    @Override
+    public Integer matriculadosEnGrupo(Integer idGrupo) {
+        Session session = Util.getCurrentSession();
+        Transaction t = session.beginTransaction();
+        List lista = session.createQuery("from Grupo where idGrupo = "+idGrupo).list();
+        t.commit();
+        Grupo g = (Grupo)lista.get(0);
+        return g.getNumMatriculados();
+    }
+
+    @Override
+    public void aumentarEn1(Integer idGrupo) {
+        int matriculados = matriculadosEnGrupo(idGrupo);
+        Integer actual = matriculados+1;
+        Session session = Util.getCurrentSession();
+        Transaction t = session.beginTransaction();
+        Query query = session.createQuery("update Grupo set numMatriculados = "+actual+" where idGrupo = "+idGrupo);
+        int result = query.executeUpdate();
+        t.commit();
+    }
+
+    @Override
+    public void crearMatrícula(Alumno alumno, Grupo grupo) {
+        Session session = Util.getCurrentSession();
+        session.beginTransaction();
+        Matricula mat = new Matricula();
+        MatriculaId m = new MatriculaId();
+        m.setAlumnoIdAlumno(alumno.getIdAlumno());
+        m.setGrupoIdGrupo(grupo.getIdGrupo());
+        Date fecha = new Date();
+        mat.setId(m);
+        mat.setFecMatricula(fecha);
+        session.save(mat);
+        session.getTransaction().commit();
+        
+        aumentarEn1(grupo.getIdGrupo());
+    }
+         
+         
 }

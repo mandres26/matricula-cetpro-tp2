@@ -15,15 +15,38 @@ public class GrupoDTO {
     private int idGrupo;
     private Date fecInicio;
     private Date fecTermino;
-    private String numMatriculados;
+    private int numMatriculados;
     private int cantMaximaAlumno;
+    private String profesor;
+    private String modulo;
+    private String turno;
 
-    public GrupoDTO(int idGrupo, Date fecInicio, Date fecTermino, String numMatriculados, int cantMaximaAlumno) {
+    public GrupoDTO(int idGrupo, Date fecInicio, Date fecTermino, int numMatriculados, int cantMaximaAlumno) {
         this.idGrupo = idGrupo;
         this.fecInicio = fecInicio;
         this.fecTermino = fecTermino;
         this.numMatriculados = numMatriculados;
         this.cantMaximaAlumno = cantMaximaAlumno;
+    }
+
+    public GrupoDTO(int idGrupo, Date fecInicio, Date fecTermino, int numMatriculados, int cantMaximaAlumno, String profesor, String modulo, String turno) {
+        this.idGrupo = idGrupo;
+        this.fecInicio = fecInicio;
+        this.fecTermino = fecTermino;
+        this.numMatriculados = numMatriculados;
+        this.cantMaximaAlumno = cantMaximaAlumno;
+        this.profesor = profesor;
+        this.modulo = modulo;
+        this.turno = turno;
+    }
+
+    public GrupoDTO(Date fecInicio, Date fecTermino, int numMatriculados) {
+        this.fecInicio = fecInicio;
+        this.fecTermino = fecTermino;
+        this.numMatriculados = numMatriculados;
+        this.cantMaximaAlumno = cantMaximaAlumno;
+        this.profesor = profesor;
+        this.modulo = modulo;
     }
 
     public int getIdGrupo() {
@@ -34,20 +57,7 @@ public class GrupoDTO {
         this.idGrupo = idGrupo;
     }
 
-    public GrupoDTO(Date fecInicio, Date fecTermino, String numMatriculados) {
-        this.fecInicio = fecInicio;
-        this.fecTermino = fecTermino;
-        this.numMatriculados = numMatriculados;
-    }
-
-    public GrupoDTO(Date fecInicio, Date fecTermino, int cantMaximaAlumno) {
-        this.fecInicio = fecInicio;
-        this.fecTermino = fecTermino;
-        this.cantMaximaAlumno = cantMaximaAlumno;
-    }
-
-    
-    
+       
     
     public Date getFecInicio() {
         return fecInicio;
@@ -65,11 +75,11 @@ public class GrupoDTO {
         this.fecTermino = fecTermino;
     }
 
-    public String getNumMatriculados() {
+    public int getNumMatriculados() {
         return numMatriculados;
     }
 
-    public void setNumMatriculados(String numMatriculados) {
+    public void setNumMatriculados(int numMatriculados) {
         this.numMatriculados = numMatriculados;
     }
 
@@ -79,6 +89,48 @@ public class GrupoDTO {
 
     public void setCantMaximaAlumno(int cantMaximaAlumno) {
         this.cantMaximaAlumno = cantMaximaAlumno;
+    }
+
+    /**
+     * @return the profesor
+     */
+    public String getProfesor() {
+        return profesor;
+    }
+
+    /**
+     * @param profesor the profesor to set
+     */
+    public void setProfesor(String profesor) {
+        this.profesor = profesor;
+    }
+
+    /**
+     * @return the modulo
+     */
+    public String getModulo() {
+        return modulo;
+    }
+
+    /**
+     * @param modulo the modulo to set
+     */
+    public void setModulo(String modulo) {
+        this.modulo = modulo;
+    }
+
+    /**
+     * @return the turno
+     */
+    public String getTurno() {
+        return turno;
+    }
+
+    /**
+     * @param turno the turno to set
+     */
+    public void setTurno(String turno) {
+        this.turno = turno;
     }
 
     
