@@ -59,7 +59,7 @@ public class Modulo  implements java.io.Serializable {
         this.idModulo = idModulo;
     }
 @ManyToOne(fetch=FetchType.LAZY)
-    @JoinColumn(name="ESPECIALIDAD_RESOLUCION_codEspecialidad_Resolucion", nullable=false)
+    @JoinColumn(name="ESPECIALIDAD_idEspecialidad", nullable=false)
     public Especialidad getEspecialidad() {
         return this.especialidad;
     }

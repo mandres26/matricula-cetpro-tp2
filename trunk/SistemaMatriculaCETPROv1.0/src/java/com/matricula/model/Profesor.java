@@ -147,7 +147,7 @@ public class Profesor  implements java.io.Serializable {
         this.edad = edad;
     }
     
-    @Column(name="numFijo", length=45)
+    @Column(name="numFijo", precision=7, scale=0)
     public Integer getNumFijo() {
         return this.numFijo;
     }
@@ -156,7 +156,7 @@ public class Profesor  implements java.io.Serializable {
         this.numFijo = numFijo;
     }
     
-    @Column(name="numMovil", length=45)
+    @Column(name="numMovil", precision=9, scale=0)
     public Integer getNumMovil() {
         return this.numMovil;
     }
