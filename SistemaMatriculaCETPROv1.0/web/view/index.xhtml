@@ -78,10 +78,16 @@
                     </h:panelGrid>  
                 </p:fieldset> 
                 <br/>
-                <p:fieldset legend="Consulta de Alumnos">  
-                    <h:panelGrid columns="2" cellpadding="10">  
-                        <p:graphicImage value="/Resources/images/consulta.jpg" />  
-                        <h:outputText  value="" />  
+                <p:fieldset legend="Funciones de Apoyo">  
+                    <h:panelGrid columns="3" cellpadding="25">  
+
+                            <p:graphicImage value="/Resources/images/iconoRegistrarAlumno.png" onclick="gotoRegistrarAlumno()" style="width: 70%; cursor: pointer" />    
+       
+                            <p:graphicImage value="/Resources/images/iconoConsultarAlumno.png" onclick="gotoConsultarAlumno()" style="width: 70%; cursor: pointer"/>    
+
+                            <p:graphicImage value="/Resources/images/iconoConsultarModulos.png" style="width: 70%; cursor: pointer;"/>    
+
+                        
                     </h:panelGrid>  
                 </p:fieldset>             
 
@@ -107,6 +113,10 @@
             
             function gotoConsultarRD() {  
                 window.location="/SistemaMatriculaCETPROv1.0/view/consultarRD.jsf";
+            }
+            
+            function gotoConsultarAlumno() {  
+                window.location="/SistemaMatriculaCETPROv1.0/view/buscarAlumno_1.jsf";
             }
             
             function gotoManualSistema() {  
