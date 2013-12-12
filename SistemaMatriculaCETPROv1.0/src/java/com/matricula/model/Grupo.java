@@ -33,7 +33,7 @@ public class Grupo  implements java.io.Serializable {
      private Turno turno;
      private Date fecInicio;
      private Date fecTermino;
-     private String numMatriculados;
+     private Integer numMatriculados;
      private Integer cantMaximaAlumno;
      private Set grupoDias = new HashSet(0);
      private Set matriculas = new HashSet(0);
@@ -48,7 +48,7 @@ public class Grupo  implements java.io.Serializable {
         this.profesor = profesor;
         this.turno = turno;
     }
-    public Grupo(int idGrupo, Modulo modulo, Profesor profesor, Turno turno, Date fecInicio, Date fecTermino, String numMatriculados, Integer cantMaximaAlumno, Set grupoDias, Set matriculas) {
+    public Grupo(int idGrupo, Modulo modulo, Profesor profesor, Turno turno, Date fecInicio, Date fecTermino, Integer numMatriculados, Integer cantMaximaAlumno, Set grupoDias, Set matriculas) {
        this.idGrupo = idGrupo;
        this.modulo = modulo;
        this.profesor = profesor;
@@ -117,12 +117,12 @@ public class Grupo  implements java.io.Serializable {
         this.fecTermino = fecTermino;
     }
     
-    @Column(name="numMatriculados", length=45)
-    public String getNumMatriculados() {
+    @Column(name="numMatriculados")
+    public Integer getNumMatriculados() {
         return this.numMatriculados;
     }
     
-    public void setNumMatriculados(String numMatriculados) {
+    public void setNumMatriculados(Integer numMatriculados) {
         this.numMatriculados = numMatriculados;
     }
     

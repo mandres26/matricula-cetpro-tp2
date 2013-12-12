@@ -9,7 +9,7 @@
             <generator class="assigned" />
         </id>
         <many-to-one name="especialidad" class="com.matricula.model.Especialidad" fetch="select">
-            <column name="ESPECIALIDAD_RESOLUCION_codEspecialidad_Resolucion" not-null="true" />
+            <column name="ESPECIALIDAD_idEspecialidad" not-null="true" />
         </many-to-one>
         <property name="nombreModulo" type="string">
             <column name="nombreModulo" length="80" />

@@ -23,8 +23,8 @@
         <property name="fecTermino" type="date">
             <column name="fecTermino" length="10" />
         </property>
-        <property name="numMatriculados" type="string">
-            <column name="numMatriculados" length="45" />
+        <property name="numMatriculados" type="java.lang.Integer">
+            <column name="numMatriculados" />
         </property>
         <property name="cantMaximaAlumno" type="java.lang.Integer">
             <column name="cantMaximaAlumno" />

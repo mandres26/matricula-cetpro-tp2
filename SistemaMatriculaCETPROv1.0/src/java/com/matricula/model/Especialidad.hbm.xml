@@ -19,7 +19,7 @@
         </property>
         <set name="modulos" inverse="true">
             <key>
-                <column name="ESPECIALIDAD_RESOLUCION_codEspecialidad_Resolucion" not-null="true" />
+                <column name="ESPECIALIDAD_idEspecialidad" not-null="true" />
             </key>
             <one-to-many class="com.matricula.model.Modulo" />
         </set>
