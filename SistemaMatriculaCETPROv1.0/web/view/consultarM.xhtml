@@ -80,7 +80,7 @@ and open the template in the editor.
                 </h:form>  
                 <!--  CONTENIDO -->     
 
-                <h:form id="form">             
+                <h:form id="form2">             
                     <p:dataTable var="modulo" value="#{moduloBean.modulos}"
                                  filteredValue="#{moduloBean.modulosFiltrados}" widgetVar="tablaModulos"
                                  selectionMode="single"
@@ -105,10 +105,10 @@ and open the template in the editor.
   
                                       
         <f:facet name="footer">  
-            <p:commandButton id="cargarModulo"  actionListener="#{moduloBean.cargarModulos}" value="Cargar Alumnos" 
-               update=":form" /> 
+            <p:commandButton id="cargarModulo"  actionListener="#{moduloBean.cargarModulos()}" value="Cargar Modulos" 
+               update=":form2" /> 
         <p:commandButton id="botonConsulta" value="Consultar Modulo" icon="ui-icon-search"  
-        update=":form:display"  oncomplete="carDialog.show()"/>     
+        update=":form2:display"  oncomplete="carDialog.show()"/>     
         <p:commandButton id="botonAceptar" value="Modificar" oncomplete="gotoModificarModulo()"/> 
           
         </f:facet> 
