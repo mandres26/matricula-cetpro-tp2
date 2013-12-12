@@ -44,15 +44,15 @@
                         <p:submenu label="Consultas" icon="ui-icon-search">
                                 <p:menuitem value="Consultar Alumno" url="/view/buscarAlumno.jsf" rendered="#{LoginBean.comprobarUsuarioBuscarAlumno()}"/>
                                 <p:menuitem value="Consultar Docente" url="/view/ConsultaDocente.jsf" rendered="#{LoginBean.comprobarUsuarioBuscarAlumno()}"/>
-                                <p:menuitem value="Consultar Modulos" url="/view/consultarModulos.jsf" rendered="#{LoginBean.comprobarUsuarioConsultarModulos()}"/>                                
+                                <p:menuitem value="Consultar Modulos" url="/view/consultarM.jsf" rendered="#{LoginBean.comprobarUsuarioConsultarModulos()}"/>                                
                                 <p:menuitem value="Consultar Programacion Curricular" url="/view/consultarProgramacionC.jsf" rendered="#{LoginBean.comprobarUsuarioConsultarPc()}"/>
                                 <p:menuitem value="Consultar Resolución Directoral" url="/view/consultarRD.jsf" rendered="#{LoginBean.comprobarConsultarRd()}"/>
                             </p:submenu>
                             
                         <p:submenu label="Ayuda" icon="ui-icon-help">  
                             <p:submenu label="Contenidos" icon="ui-icon-search">  
-                                <p:menuitem value="Manual de Usuario" url="#" />  
-                                <p:menuitem value="Manual del Sistema" url="#" /> 
+                                <p:menuitem value="Manual de Usuario" onclick="gotoManualUsuario()" />  
+                                <p:menuitem value="Manual del Sistema" onclick="gotoManualSistema()" /> 
                             </p:submenu>    
                         </p:submenu> 
 
