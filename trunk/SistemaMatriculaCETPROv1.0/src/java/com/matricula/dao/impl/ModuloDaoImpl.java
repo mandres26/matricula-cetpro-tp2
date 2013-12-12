@@ -65,6 +65,14 @@ public class ModuloDaoImpl implements ModuloDao{
         return lista;
     }
     
+    @Override
+    public List<Modulo> listarModulos() {
+        Session session = Util.getCurrentSession();
+        Transaction t = session.beginTransaction();
+        List lista = session.createQuery("from Modulo").list();
+        t.commit();
+        return lista;
+    }
     
         public Modulo getModulo(int idca) {
         Modulo ca=null;
