@@ -36,7 +36,7 @@
             <column name="numFijo" precision="7" scale="0" />
         </property>
         <property name="numMovil" type="java.lang.Integer">
-            <column name="numMovil" precision="8" scale="0" />
+            <column name="numMovil" precision="9" scale="0" />
         </property>
         <property name="domicilio" type="string">
             <column name="domicilio" length="45" />
