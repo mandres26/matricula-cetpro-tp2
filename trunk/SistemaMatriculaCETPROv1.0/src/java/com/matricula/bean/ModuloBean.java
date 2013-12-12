@@ -7,6 +7,7 @@ package com.matricula.bean;
 import com.matricula.dao.ModuloDao;
 import com.matricula.dao.impl.ModuloDaoImpl;
 import com.matricula.model.Modulo;
+import java.util.Iterator;
 import java.util.List;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
@@ -22,9 +23,14 @@ public class ModuloBean {
      public Modulo modulo;
      public Modulo moduloSeleccionado;
      public Modulo modulosFiltrados;
+     
      public void cargarModulos(){
         ModuloDao md=new ModuloDaoImpl();
         modulos=md.listarModulos();    
+         for(Modulo o: modulos){
+             System.out.println("---------------------------------------------------------------++++++++++++++++++++++............................");
+            System.out.println(o.getNombreModulo());
+         }
      }
 
     public List<Modulo> getModulos() {
