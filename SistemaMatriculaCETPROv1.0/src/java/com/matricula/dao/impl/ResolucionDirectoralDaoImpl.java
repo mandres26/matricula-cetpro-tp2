@@ -33,6 +33,19 @@ public class ResolucionDirectoralDaoImpl implements ResolucionDirectoralDao {
         t.commit();
         return !lista.isEmpty();
     }
+    
+    @Override
+    public List<ResolucionDirectoral> getRD(Integer number) {
+        Session session = Util.getCurrentSession();
+        Transaction t = session.beginTransaction();
+        String sql = "from ResolucionDirectoral "
+                + " where idRD=:id ";
+        Query query = session.createQuery(sql);
+        query.setParameter("id", number);
+        List lista =query.list();        
+        t.commit();
+        return lista;
+    }
 
     @Override
     public void insertarRD(Integer idRD, Integer anioInicio, 

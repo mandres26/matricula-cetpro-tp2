@@ -17,6 +17,7 @@ import java.util.List;
 public interface ResolucionDirectoralDao {
     
     public boolean existeIDenRD(Integer id);
+    public List<ResolucionDirectoral> getRD(Integer id);
     public void insertarRD(Integer idRD, Integer anioInicio, 
             Integer anioTermino, Date fecRegistro, List<EspecialidadDTO> especialidades);    
     public List<ResolucionDirectoral> listarRDs();

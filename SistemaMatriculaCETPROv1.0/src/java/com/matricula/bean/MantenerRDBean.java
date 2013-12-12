@@ -44,6 +44,9 @@ public class MantenerRDBean implements Serializable  {
     private List<EspecialidadDTO> especialidades = null;
     private EspecialidadDTO espSeleccionada;
     
+    private ResolucionDirectoral resolucionDirectoralSeleccionado;
+    private List<ResolucionDirectoral> auxRD;
+    
     /** Creates a new instance of RegistrarRDBean */
     public MantenerRDBean() {
         registro = true;
@@ -82,15 +85,25 @@ public class MantenerRDBean implements Serializable  {
             }
         }
         
-        /*System.out.println("RD: "+idResolucion+" FI: "+date1+" FT: "+date2);
-        for(EspecialidadDTO i: especialidades){
-            System.out.println("EspecialidadDTO");
-            System.out.println(i.getNombreEspecialidad()+"-"+i.getCicloEspecialidad());
-            System.out.println("Modulos");
-                for(ModuloDTO j: i.getModulos()){
-                    System.out.println(j.getNombreModulo()+"-"+j.getHorasModulo());
-                }
-        }   */
+    }
+    
+    public void CargarRD(){
+        ResolucionDirectoralDao resolucionDao = new ResolucionDirectoralDaoImpl();
+        if(resolucionDao.existeIDenRD(idResolucion)){
+            System.out.println("asdfñkajsdfñkljasflñkjawslñkfjasñldkfjwalñkejflkañsjdflñkjawelñkfjawsñlfj");
+            System.out.println("MSJ ID EXISTENTE");
+            ResolucionDirectoralDao rd=new ResolucionDirectoralDaoImpl();
+            auxRD= rd.getRD(idResolucion);    
+            for(ResolucionDirectoral o: auxRD){
+                resolucionDirectoralSeleccionado=o;
+            }
+            Util.mostrarMensajeINFO("Resolución Cargada","Éxito en la operación");
+        }else{
+            System.out.println("MSJ ID NO EXISTENTE");
+            Util.mostrarMensajeERROR("ID No Existente", "Cambie la id de la Resolución");
+            
+            
+        }
     }
     
     private void grabarRD(){
@@ -108,20 +121,25 @@ public class MantenerRDBean implements Serializable  {
     }
     
     private void cargarRD(){
-        /*ResolucionDirectoralDao resolucionDao = new ResolucionDirectoralDaoImpl();
+        ResolucionDirectoralDao resolucionDao = new ResolucionDirectoralDaoImpl();
         if(resolucionDao.existeIDenRD(idResolucion)){
             System.out.println("MSJ ID EXISTENTE");
             //Util.mostrarMensajeERROR("ID existente", "Cambie la id de la Resolución");
             //ResolucionDirectoral rd = resolucionDao.getRD(idResolucion);
            // anioInicio=rd.getAnioInicio();
             //anioFin=rd.getAnioTermino();
+            ResolucionDirectoralDao rd=new ResolucionDirectoralDaoImpl();
+            auxRD= rd.getRD(idResolucion);    
+            for(ResolucionDirectoral o: auxRD){
+                resolucionDirectoralSeleccionado=o;
+            }
             Util.mostrarMensajeINFO("Resolución Cargada","Éxito en la operación");
         }else{
             System.out.println("MSJ ID NO EXISTENTE");
             Util.mostrarMensajeERROR("ID No Existente", "Cambie la id de la Resolución");
             
             
-        }*/
+        }
     }
 
     public ModuloDTO getModSeleccionado() {
@@ -328,6 +346,22 @@ public class MantenerRDBean implements Serializable  {
         le.add(e2);
         return le;
     }*/
+
+    public ResolucionDirectoral getResolucionDirectoralSeleccionado() {
+        return resolucionDirectoralSeleccionado;
+    }
+
+    public void setResolucionDirectoralSeleccionado(ResolucionDirectoral resolucionDirectoralSeleccionado) {
+        this.resolucionDirectoralSeleccionado = resolucionDirectoralSeleccionado;
+    }
+
+    public List<ResolucionDirectoral> getAuxRD() {
+        return auxRD;
+    }
+
+    public void setAuxRD(List<ResolucionDirectoral> auxRD) {
+        this.auxRD = auxRD;
+    }
        
     
     public int getIdEspecialidad() {
