@@ -57,7 +57,7 @@ public class ModuloDaoImpl implements ModuloDao{
         Session session = Util.getCurrentSession();
         Transaction t = session.beginTransaction();
         String sql = "from Modulo "
-                + " where ESPECIALIDAD_RESOLUCION_codEspecialidad_Resolucion=:id ";
+                + " where  ESPECIALIDAD_idEspecialidad=:id ";
         Query query = session.createQuery(sql);
         query.setParameter("id", idEspecialidad);
         List lista =query.list();        

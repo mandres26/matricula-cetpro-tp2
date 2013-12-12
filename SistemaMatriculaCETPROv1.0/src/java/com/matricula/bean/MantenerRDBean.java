@@ -108,7 +108,7 @@ public class MantenerRDBean implements Serializable  {
     }
     
     private void cargarRD(){
-        ResolucionDirectoralDao resolucionDao = new ResolucionDirectoralDaoImpl();
+        /*ResolucionDirectoralDao resolucionDao = new ResolucionDirectoralDaoImpl();
         if(resolucionDao.existeIDenRD(idResolucion)){
             System.out.println("MSJ ID EXISTENTE");
             //Util.mostrarMensajeERROR("ID existente", "Cambie la id de la Resolución");
@@ -121,7 +121,7 @@ public class MantenerRDBean implements Serializable  {
             Util.mostrarMensajeERROR("ID No Existente", "Cambie la id de la Resolución");
             
             
-        }
+        }*/
     }
 
     public ModuloDTO getModSeleccionado() {
