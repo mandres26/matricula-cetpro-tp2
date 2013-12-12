@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core">
+    <h:head>
+        <title>Registrar Resolución Directoral</title>
+    </h:head>
+    <h:body>
+        <h:form id="formConsultarRD" prependId="false" style="font-size:15px;text-align:center" >
+            <center>
+            <br/>
+                <h:outputText value="Consultar Modulos"/>            
+            <br/>
+            
+            <p:contextMenu for="resoluciones">  
+                <p:menuitem value="View" icon="ui-icon-search" oncomplete="PF('rdDialog').show()"/>   
+            </p:contextMenu>  
+           
+            <p:dataTable id="resoluciones" var="rd" value="#{consultarRDBean.resoluciones}" rowKey="#{rd.idRd}"  
+                         selection="#{consultarRDBean.selectedRD}" selectionMode="single"
+                         style="width:80%">  
+                
+                <p:column headerText="ID">  
+                    #{rd.idRd}  
+                </p:column>  
+
+                <p:column headerText="Año de Inicio">  
+                    #{rd.anioInicio}  
+                </p:column>  
+
+                <p:column headerText="Año de Término" >  
+                    #{rd.anioTermino}  
+                </p:column>  
+
+                <p:column headerText="Fecha de Registro">  
+                    #{rd.fecRegistro}  
+                </p:column>  
+                
+                <f:facet name="footer">  
+                    <p:commandButton id="viewButton" value="Contenido de la Modulo" icon="ui-icon-search"  
+                                     oncomplete="PF('rdDialog').show()" update=":formConsultarRD:dis"
+                                     actionListener="#{consultarRDBean.listarEspecialidades()}"/>  
+                </f:facet> 
+
+            </p:dataTable>   
+
+            <p:dialog header="Detalle de Modulo" widgetVar="rdDialog" width="1000"
+                      showEffect="clip" hideEffect="fold" id="dialog">  
+                 <h:panelGrid id="dis" columns="3" cellpadding="4">
+                     <h:outputText value="ID: #{consultarRDBean.selectedRD.idRd}" />  
+                     <h:outputText value="Año Inicio: #{consultarRDBean.selectedRD.anioInicio}" />  
+                     <h:outputText value="Año Fin: #{consultarRDBean.selectedRD.anioTermino}" />  
+                 </h:panelGrid>    
+                <hr/>
+                
+                
+                     
+            </p:dialog>   
+            
+            </center>
+        </h:form>
+    </h:body>
+</html>
