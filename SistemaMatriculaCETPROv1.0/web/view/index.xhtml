@@ -46,7 +46,7 @@
                         <p:submenu label="Consultas" icon="ui-icon-search">
                                 <p:menuitem value="Consultar Alumno" url="/view/buscarAlumno.jsf" rendered="#{LoginBean.comprobarUsuarioBuscarAlumno()}"/>
                                 <p:menuitem value="Consultar Docente" url="/view/ConsultaDocente.jsf" rendered="#{LoginBean.comprobarUsuarioBuscarAlumno()}"/>
-                                <p:menuitem value="Consultar Modulos" url="/view/consultarModulos.jsf" rendered="#{LoginBean.comprobarUsuarioConsultarModulos()}"/>                                
+                                <p:menuitem value="Consultar Modulos" url="/view/consultarM.jsf" rendered="#{LoginBean.comprobarUsuarioConsultarModulos()}"/>                                
                                 <p:menuitem value="Consultar Programacion Curricular" url="/view/consultarProgramacionC.jsf" rendered="#{LoginBean.comprobarUsuarioConsultarPc()}"/>
                                 <p:menuitem value="Consultar Resolución Directoral" url="/view/consultarRD.jsf" rendered="#{LoginBean.comprobarConsultarRd()}"/>
                             </p:submenu>
@@ -85,7 +85,7 @@
        
                             <p:graphicImage value="/Resources/images/iconoConsultarAlumno.png" onclick="gotoConsultarAlumno()" style="width: 70%; cursor: pointer"/>    
 
-                            <p:graphicImage value="/Resources/images/iconoConsultarModulos.png" style="width: 70%; cursor: pointer;"/>    
+                            <p:graphicImage value="/Resources/images/iconoConsultarModulos.png" onclick="gotoConsultarModulos()"  style="width: 70%; cursor: pointer;"/>    
 
                         
                     </h:panelGrid>  
@@ -99,6 +99,10 @@
                 window.location="/SistemaMatriculaCETPROv1.0/view/login.jsf";
             }
             
+            function gotoConsultarModulos() {  
+                window.location="/SistemaMatriculaCETPROv1.0/view/consultarM.jsf";
+            }
+    
             function gotoIndex() {  
                 window.location="/SistemaMatriculaCETPROv1.0/view/index.jsf";
             }  

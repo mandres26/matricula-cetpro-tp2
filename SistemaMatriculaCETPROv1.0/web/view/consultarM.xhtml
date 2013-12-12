@@ -18,7 +18,7 @@ and open the template in the editor.
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
         <link href="./../Resources/CSS/default.css" rel="stylesheet" type="text/css" />
         <link href="./../Resources/CSS/cssLayout.css" rel="stylesheet" type="text/css" />
-        <title>Modificar Alumno</title>
+        <title>Consultar Modulos</title>
         <link rel="stylesheet" href="Resources/CSS/estilos.css" />
     </h:head>
 
@@ -56,7 +56,7 @@ and open the template in the editor.
                         <p:submenu label="Consultas" icon="ui-icon-search">
                                 <p:menuitem value="Consultar Alumno" url="/view/buscarAlumno.jsf" rendered="#{LoginBean.comprobarUsuarioBuscarAlumno()}"/>
                                 <p:menuitem value="Consultar Docente" url="/view/ConsultaDocente.jsf" rendered="#{LoginBean.comprobarUsuarioBuscarAlumno()}"/>
-                                <p:menuitem value="Consultar Modulos" url="/view/consultarModulos.jsf" rendered="#{LoginBean.comprobarUsuarioConsultarModulos()}"/>                                
+                                <p:menuitem value="Consultar Modulos" url="/view/consultarM.jsf" rendered="#{LoginBean.comprobarUsuarioConsultarModulos()}"/>                                
                                 <p:menuitem value="Consultar Programacion Curricular" url="/view/consultarProgramacionC.jsf" rendered="#{LoginBean.comprobarUsuarioConsultarPc()}"/>
                                 <p:menuitem value="Consultar Resolución Directoral" url="/view/consultarRD.jsf" rendered="#{LoginBean.comprobarConsultarRd()}"/>
                             </p:submenu>
